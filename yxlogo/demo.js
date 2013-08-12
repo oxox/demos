@@ -19,7 +19,7 @@ $(function(){
                 if(index >= TOTAL){
                     clearInterval(timer1);
                     //延迟2秒淡出
-                    // $warp.delay(2000).fadeOut(800);
+                    $warp.delay(1000).fadeOut(800);
                 }
                 $logo.css('margin-top','-' + (index*100) + 'px');
             },SPEED);
