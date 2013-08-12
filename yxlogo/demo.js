@@ -11,7 +11,7 @@ $(function(){
             SPEED = 30;     //帧速度
         //确保图片已加载完成 
         $logo.appendTo($warp).one('load',function(){
-            $warp.attr('style','display: block; position: absolute; width: 270px; height: 100px; overflow: hidden; margin: -66px 0 0 -10px;')
+            $warp.attr('style','display: block; position: absolute; width: 255px; height: 100px; overflow: hidden; margin: -63px 0 0 -1px;')
             // $h1.css('visibility','hidden');
             // $warp.show();
             var timer1 = setInterval(function(){
