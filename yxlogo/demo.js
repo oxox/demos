@@ -7,7 +7,7 @@ $(function(){
             }),
             $h1 = $('h1'),
             index = 0,
-            TOTAL = 197,    //总共帧数
+            TOTAL = 222,    //总共帧数
             SPEED = 30;     //帧速度
         //确保图片已加载完成 
         $logo.appendTo($warp).one('load',function(){
