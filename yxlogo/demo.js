@@ -3,7 +3,7 @@ $(function(){
 
         var $warp = $('.mod_logo_extra:eq(0)'),
             $logo = $('<img />',{
-                src:'http://oxox.io/demos/yxlogo/logo_sprites.png'
+                src:'http://oxox.io/demos/yxlogo/logo_sprites2.png'
             }),
             $h1 = $('h1'),
             index = 0,
