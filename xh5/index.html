@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"  />
+	<meta name="apple-mobile-web-app-capable" content="yes"  />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"  />
+	<meta name="format-detection" content="telephone=no" />
+	<title>商详H5</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="ic_container">
+		<header class="ic_header">
+			<h1 class="ic_header_tit">商品详情</h1>
+		</header>
+		<section class="ic_content">
+			<!--S 商品图片 -->
+			<section class="x_gallery" id="J_slide">
+				<div class="x_gallery_wrap iosSlider">
+					<ul class="x_gallery_list slider clearfix">
+						<li><img src="http://img1.icson.com/product/mm/19/049/19-049-10067.jpg" alt="商品图片" width="200" height="200"/></li>
+						<li><img src="http://img1.icson.com/product/mm/19/136/19-136-707-02.jpg" alt="商品图片" width="200" height="200"/></li>
+						<li><img src="http://img1.icson.com/product/mm/19/136/19-136-707-01.jpg" alt="商品图片" width="200" height="200"/></li>
+
+						
+					</ul>
+				</div>
+				<span class="x_gallery_btn x_gallery_btn_disabled x_gallery_btn_prev J_silde_prev"></span>
+				<span class="x_gallery_btn x_gallery_btn_next J_silde_next"></span>
+			</section>
+			<!--E 商品图片 -->
+
+			<!--S 商品图片 -->
+			<section class="x_info">
+				<h1 class="x_name">全网底价 Apple 苹果 MacBook AIR MD711CH/A 11.6英寸笔记本电脑 Intel Core i5/4GB/128G闪存/Intel HD Graphics 5000</h1>
+				<h2 class="x_desc">新款AIR 11寸上市，全新 Intel Core 处理器，长达 9小时的电池使用时间！</h2>
+				<dl class="x_attr x_price xprice_current">
+					<dt class="x_attr_label">促销价：</dt>
+					<dd class="x_attr_con">
+						<span class="mod_price xprice_val"><i>¥</i><span>899.00</span></span>
+						<span class=""></span>
+					</dd>
+				</dl>
+				<dl class="x_attr x_price x_price_origin">
+					<dt class="x_attr_label">原价：</dt>
+					<dd class="x_attr_con"><span class="mod_price xprice_val"><i>¥</i><del>899.00</del></span></dd>	
+				</dl>
+				<!--<dl class="x_attr x_price">
+					<dt class="x_attr_label">商品编号：</dt>
+					<dd class="x_attr_con">21-022-10015</dd>	
+				</dl>-->
+			</section>
+			<!--E 商品图片 -->
+
+
+			<!--S 商品规格 -->
+			<section class="x_sku">
+				<dl class="x_delivery">
+					<dt>送至：</dt>
+					<dd>
+						<div class="mod_select">
+							<select>
+								<option>广东</option>
+								<option>上海</option>
+								<option>北京</option>
+								<option>山东</option>
+								<option>湖南</option>
+								<option>湖北</option>
+								<option>内蒙古</option>
+								<option>重庆</option>
+							</select>
+						</div>
+						<span>有货，可当日出库</span>
+					</dd>
+				</dl>
+				<dl>
+					<dt>颜色：</dt>
+					<dd>
+						<ul class="x_option">
+							<li class="x_option_selected"><a href="###"><span class="x_option_val">白色</span><i class="x_option_ico"></i></a></li>
+							<li><a href="###"><span class="x_option_val">黑色</span></a></li>
+						</ul>
+					</dd>
+				</dl>
+				<dl>
+					<dt>购买方式：</dt>
+					<dd>
+						<ul class="x_option">
+							<li class="x_option_selected"><a href="###"><span class="x_option_val">话费购机</span><i class="x_option_ico"></i></a></li>
+							<li><a href="###"><span class="x_option_val">选号入网</span></a></li>
+						</ul>
+					</dd>
+				</dl>
+				<dl class="x_number">
+					<dt>数量：</dt>
+					<dd>
+						<span class="mod_number clerfix">
+							<span class="mod_number_btn mod_number_minus"></span>
+								<input type="text" class="mod_number_input" value="1" />
+							<span class="mod_number_btn mod_number_plus"></span>
+						</span>
+					</dd>
+				</dl>
+				<div class="x_buy">
+					<!--<a href="#" class="x_btn">立即购买</a>-->
+					<a href="#" class="x_btn x_btn_cart">加入购物车</a>
+				</div>
+				<div class="x_tips">
+					<p>注意：此商品可提供普通发票，可提供增值税发票。</p>
+				</div>
+			</section>
+			<!--E 商品规格 -->
+
+			<!--S 商品规格 -->
+			<section class="x_overview">
+				<ul class="">
+					<li><a href="#">商品评论（123）</a><i></i></li>
+					<li><a href="#">图文详情</a><i></i></li>
+					<li><a href="#">规格参数</a><i></i></li>
+				</ul>
+			</section>
+			<!--E 商品规格 -->
+		</section>
+
+		<footer class="ic_footer">
+			<p>&copy;2006-2013 上海易迅电子商务发展有限公司 版权所有</p>
+		</footer>
+	</div>
+	<script type="text/javascript" src="js/jquery.iosslider.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			
+			$('.iosSlider').iosSlider({
+				snapToChildren: true,
+				desktopClickDrag: true,
+				snapSlideCenter: true
+			});
+			
+		});
+	</script>
+	
+
+</body>	
+</html>
