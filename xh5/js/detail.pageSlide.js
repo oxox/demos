@@ -27,7 +27,6 @@ define(function(require, exports, module) {
 			});
 			this.pageWrap.bind('webkitTransitionEnd', function(e){
 				pageSlide.isSliding = false;
-				console.log('ebd')
 				pageSlide.pageWrap.css({
 					'width': '',
 					'-webkit-transform': '',

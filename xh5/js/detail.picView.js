@@ -4,7 +4,6 @@
 define(function(require, exports, module) {
 	var $ = require('zepto.js');
 	var slider = require('zepto.touchslider');
-	console.log('http://img1.icson.com/product/mm/21/136/21-136-11001-02.jpg'.replace('\/mm\/', '\/mpic\/'))
 	var picView = {
 		imagesData: DETAIL_DATA.images,
 
@@ -24,8 +23,6 @@ define(function(require, exports, module) {
 			}
 			$('#J_gallery .xgallery_list').append(galleryHtml.join(''));
 			$('#J_bigGallery .xbiggallery_list').append(galleryHtml.join('').replace(/\/mm\//g, '/mpic/'));
-			console.log(galleryHtml.join('').replace(/\/mm\//g, '/mpic/'))
-
 
 			$('#J_gallery').touchSlider({
 				viewportCls: 'xgallery_wrap',
