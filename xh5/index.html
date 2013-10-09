@@ -8,139 +8,159 @@
 	<meta name="format-detection" content="telephone=no" />
 	<title>商详H5</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
-	<script type="text/javascript" src="js/jquery.min.js"></script>
 </head>
 <body>
-	<div class="ic_container">
-		<header class="ic_header">
-			<h1 class="ic_header_tit">商品详情</h1>
-		</header>
-		<section class="ic_content">
-			<!--S 商品图片 -->
-			<section class="x_gallery" id="J_slide">
-				<div class="x_gallery_wrap iosSlider">
-					<ul class="x_gallery_list slider clearfix">
-						<li><img src="http://img1.icson.com/product/mm/19/049/19-049-10067.jpg" alt="商品图片" width="200" height="200"/></li>
-						<li><img src="http://img1.icson.com/product/mm/19/136/19-136-707-02.jpg" alt="商品图片" width="200" height="200"/></li>
-						<li><img src="http://img1.icson.com/product/mm/19/136/19-136-707-01.jpg" alt="商品图片" width="200" height="200"/></li>
+	<div class="xcontainer" id="J_container">
+		<div class="xcontent" id="J_content">
+			<div class="xcontent_section">
+				<section class="xgallery" id="J_gallery">
+					<div class="xgallery_wrap">
+						<ul class="xgallery_list">
+						</ul>
+					</div>
+					<div class="xgallery_status"></div>
+				</section>
 
-						
-					</ul>
+				<section class="xbase">
+					<h1 class="xname">DELL 戴尔 Ins14RR-2618L14英寸笔记本电脑 蓝色 i5 3210M /4G DD R3</h1>
+					<p class="xprice">
+						<span class="xprice_tit">微信价</span>
+						<span class="xprice_val"><i>&yen;</i><span>2999</span></span>
+					</p>
+					<p class="xprice">
+						<span class="xprice_tit">微信价</span>
+						<span class="xprice_val">暂无报价</span>
+					</p>
+					<p class="xarea">送至<span class="xarea_val">广东省</span>有货，因地域不同商品售价和库存可能会有差异</p>
+					<div class="xsku">
+						<dl class="xattr">
+							<dt class="xattr_tit">颜色</dt>
+							<dd class="xattr_con">
+								<div class="xoption">
+									<a href="#" class="xoption_val xoption_val_selected">白色</a>
+									<a href="#" class="xoption_val">黑色</a>
+								</div>
+							</dd>
+						</dl>
+						<dl class="xattr">
+							<dt class="xattr_tit">规格</dt>
+							<dd class="xattr_con">
+								<div class="xoption">
+									<a href="#" class="xoption_val xoption_val_disabled">8G</a>
+									<a href="#" class="xoption_val">16G</a>
+									<a href="#" class="xoption_val">64G</a>
+								</div>
+							</dd>
+						</dl>
+					</div>
+				</section>
+
+				<div class="xbiggallery" id="J_bigGallery">
+					<div class="xbiggallery_wrap">
+						<ul class="xbiggallery_list clearfix"></ul>
+					</div>
+					<div class="xbiggallery_status"></div>
 				</div>
-				<span class="x_gallery_btn x_gallery_btn_disabled x_gallery_btn_prev J_silde_prev"></span>
-				<span class="x_gallery_btn x_gallery_btn_next J_silde_next"></span>
-			</section>
-			<!--E 商品图片 -->
+			</div>
 
-			<!--S 商品图片 -->
-			<section class="x_info">
-				<h1 class="x_name">全网底价 Apple 苹果 MacBook AIR MD711CH/A 11.6英寸笔记本电脑 Intel Core i5/4GB/128G闪存/Intel HD Graphics 5000</h1>
-				<h2 class="x_desc">新款AIR 11寸上市，全新 Intel Core 处理器，长达 9小时的电池使用时间！</h2>
-				<dl class="x_attr x_price xprice_current">
-					<dt class="x_attr_label">促销价：</dt>
-					<dd class="x_attr_con">
-						<span class="mod_price xprice_val"><i>¥</i><span>899.00</span></span>
-						<span class=""></span>
-					</dd>
-				</dl>
-				<dl class="x_attr x_price x_price_origin">
-					<dt class="x_attr_label">原价：</dt>
-					<dd class="x_attr_con"><span class="mod_price xprice_val"><i>¥</i><del>899.00</del></span></dd>	
-				</dl>
-				<!--<dl class="x_attr x_price">
-					<dt class="x_attr_label">商品编号：</dt>
-					<dd class="x_attr_con">21-022-10015</dd>	
-				</dl>-->
-			</section>
-			<!--E 商品图片 -->
-
-
-			<!--S 商品规格 -->
-			<section class="x_sku">
-				<dl class="x_delivery">
-					<dt>送至：</dt>
-					<dd>
-						<div class="mod_select">
-							<select>
-								<option>广东</option>
-								<option>上海</option>
-								<option>北京</option>
-								<option>山东</option>
-								<option>湖南</option>
-								<option>湖北</option>
-								<option>内蒙古</option>
-								<option>重庆</option>
-							</select>
+			<div class="xcontent_section" style="display:none;">
+				<div class="xinfo">
+					<div class="xinfo_item">
+						<h4 class="xinfo_item_tit">内容标题</h4>
+						<div class="xinfo_item_con">
+							<p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
 						</div>
-						<span>有货，可当日出库</span>
-					</dd>
-				</dl>
-				<dl>
-					<dt>颜色：</dt>
-					<dd>
-						<ul class="x_option">
-							<li class="x_option_selected"><a href="###"><span class="x_option_val">白色</span><i class="x_option_ico"></i></a></li>
-							<li><a href="###"><span class="x_option_val">黑色</span></a></li>
-						</ul>
-					</dd>
-				</dl>
-				<dl>
-					<dt>购买方式：</dt>
-					<dd>
-						<ul class="x_option">
-							<li class="x_option_selected"><a href="###"><span class="x_option_val">话费购机</span><i class="x_option_ico"></i></a></li>
-							<li><a href="###"><span class="x_option_val">选号入网</span></a></li>
-						</ul>
-					</dd>
-				</dl>
-				<dl class="x_number">
-					<dt>数量：</dt>
-					<dd>
-						<span class="mod_number clerfix">
-							<span class="mod_number_btn mod_number_minus"></span>
-								<input type="text" class="mod_number_input" value="1" />
-							<span class="mod_number_btn mod_number_plus"></span>
-						</span>
-					</dd>
-				</dl>
-				<div class="x_buy">
-					<!--<a href="#" class="x_btn">立即购买</a>-->
-					<a href="#" class="x_btn x_btn_cart">加入购物车</a>
+					</div>
+					<div class="xinfo_item">
+						<h4 class="xinfo_item_tit">内容标题</h4>
+						<div class="xinfo_item_con">
+							<p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+						</div>
+					</div>
+					<div class="xinfo_item">
+						<h4 class="xinfo_item_tit">内容标题</h4>
+						<div class="xinfo_item_con">
+							<p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+						</div>
+					</div>
 				</div>
-				<div class="x_tips">
-					<p>注意：此商品可提供普通发票，可提供增值税发票。</p>
+			</div>
+
+			<div class="xcontent_section" style="display:none;">
+				<div class="xcomment">
+					<div class="xcomment_top clearfix">
+						<span class="xcomment_total">用户评论<span class="xcomment_total_count">（<span>9999</span>）</span></span>
+						<span class="xcomment_grade">评分<span class="xcomment_grade_score">4.8</span></span>
+					</div>
+					<div class="xcomment_list">
+						<div class="xcomment_item">
+							<p>一时兴起买的.其实没什么大用处。性价比确实不高.不过单反什么都有了。让自己高兴下也好的。</p>
+							<div class="xcomment_item_ft clearfix">
+								<span class="xcomment_user">87***25</span>
+								<span class="xcomment_date">2013-08-05</span>
+							</div>
+						</div>
+						<div class="xcomment_item">
+							<p>一时兴起买的.其实没什么大用处。性价比确实不高.不过单反什么都有了。让自己高兴下也好的。</p>
+							<div class="xcomment_item_ft clearfix">
+								<span class="xcomment_user">87***25</span>
+								<span class="xcomment_date">2013-08-05</span>
+							</div>
+						</div>
+						<div class="xcomment_item">
+							<p>一时兴起买的.其实没什么大用处。性价比确实不高.不过单反什么都有了。让自己高兴下也好的。</p>
+							<div class="xcomment_item_ft clearfix">
+								<span class="xcomment_user">87***25</span>
+								<span class="xcomment_date">2013-08-05</span>
+							</div>
+						</div>
+						<div class="xcomment_item">
+							<p>一时兴起买的.其实没什么大用处。性价比确实不高.不过单反什么都有了。让自己高兴下也好的。</p>
+							<div class="xcomment_item_ft clearfix">
+								<span class="xcomment_user">87***25</span>
+								<span class="xcomment_date">2013-08-05</span>
+							</div>
+						</div>
+						<div class="xcomment_item">
+							<p>一时兴起买的.其实没什么大用处。性价比确实不高.不过单反什么都有了。让自己高兴下也好的。</p>
+							<div class="xcomment_item_ft clearfix">
+								<span class="xcomment_user">87***25</span>
+								<span class="xcomment_date">2013-08-05</span>
+							</div>
+						</div>
+					</div>
+					<div class="xcomment_loading">更多20条...</div>
 				</div>
-			</section>
-			<!--E 商品规格 -->
-
-			<!--S 商品规格 -->
-			<section class="x_overview">
-				<ul class="">
-					<li><a href="#">商品评论（123）</a><i></i></li>
-					<li><a href="#">图文详情</a><i></i></li>
-					<li><a href="#">规格参数</a><i></i></li>
-				</ul>
-			</section>
-			<!--E 商品规格 -->
-		</section>
-
-		<footer class="ic_footer">
-			<p>&copy;2006-2013 上海易迅电子商务发展有限公司 版权所有</p>
-		</footer>
+			</div>
+		</div>
+		<ul class="xnav" id="J_nav">
+			<li><a href="#J_base"  class="xnav_current"  data-page="J_base">商品</a></li>
+			<li><a href="#J_detail" data-page="J_detail">详情</a></li>
+			<li><a href="#J_comment" data-page="J_comment">评价</a></li>
+			<li><a href="#" class="xnav_buy"><i></i><span>立即购买</span></a></li>
+		</ul>
 	</div>
-	<script type="text/javascript" src="js/jquery.iosslider.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			
-			$('.iosSlider').iosSlider({
-				snapToChildren: true,
-				desktopClickDrag: true,
-				snapSlideCenter: true
-			});
-			
-		});
-	</script>
-	
+	<div class="xmask" id="J_mask"></div>
 
+	<script type="text/javascript">
+		var DETAIL_DATA = {
+			images: [
+					'http://img1.icson.com/product/mm/21/136/21-136-11001.jpg',
+					'http://img1.icson.com/product/mm/21/136/21-136-11001-02.jpg',
+					'http://img1.icson.com/product/mm/21/136/21-136-11001-04.jpg',
+					'http://img2.icson.com/product/mm/04/136/04-136-988.jpg'
+					]
+		}
+	</script>
+	<script src="js/sea.js" id="seajsnode"></script>
+	<script type="text/javascript">
+		seajs.config({
+		  base: "./js/",
+		  alias: {
+		    "zepto": "zepto.js"
+		  }
+		})
+		seajs.use("detail.js");
+	</script>
 </body>	
 </html>
