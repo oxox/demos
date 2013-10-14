@@ -130,6 +130,8 @@
 		_updateStatus: function(){
 			var curCls = this.options.stasusCurCls;
 			this.statusNodes.eq(this.index).addClass(curCls).siblings().removeClass(curCls);
+			$('#test').text(this.index +' 第' + (parseInt($('#test').data('count')) || 0) + '次');
+			$('#test').data('count', (parseInt($('#test').data('count')) || 0) +1);
 		},
 
 		_setPos: function(left, duration){
@@ -198,11 +200,9 @@
 		},
 
 		_touchstart: function(e){
-			//e.preventDefault();
 			if (this.isSliding) {
 				return ;
 			}
-			//alert(this.support.touch)
 			var point = this.support.touch ? e.touches[0] : e; 
 			this.scroller.css({
 				'-webkit-transition-duration': 0 + 'ms',
