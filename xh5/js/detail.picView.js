@@ -3,7 +3,8 @@
 **/
 define(function(require, exports, module) {
 	var $ = require('zepto.js');
-	var slider = require('zepto.touchslider');
+	var Slider = require('zepto.touchslider');
+	var gallery;
 	var picView = {
 		imagesData: DETAIL_DATA.images,
 
@@ -19,12 +20,12 @@ define(function(require, exports, module) {
 			var galleryHtml = [];
 			var bigGalleryHtml = [];
 			for(var i = 0, length = this.imagesData.length; i < length; i++){
-				galleryHtml.push('<li><img data-src="'+ this.imagesData[i] +'" src="'+ this.placeholderSrc +'" /></li>');
+				galleryHtml.push('<li><img src="'+ this.imagesData[i] +'" data-src="'+ this.placeholderSrc +'" /></li>');
 			}
 			$('#J_gallery .xgallery_list').append(galleryHtml.join(''));
 			$('#J_bigGallery .xbiggallery_list').append(galleryHtml.join('').replace(/\/mm\//g, '/mpic/'));
 
-			$('#J_gallery').touchSlider({
+			gallery = new Slider('#J_gallery', {
 				viewportCls: 'xgallery_wrap',
 				scrollerCls: 'xgallery_list',
 				statusListCls: 'xgallery_status',
@@ -34,12 +35,12 @@ define(function(require, exports, module) {
 
 		bindEvent: function(){
 			$('#J_gallery .xgallery_list li').bind('click', function(e){
-				picView.showBigGallery();
+				//picView.showBigGallery();
 			});
 
 
 			$('#J_mask').bind('click', function(){
-				picView.hideBigGallery();
+				//picView.hideBigGallery();
 			});
 		},
 
