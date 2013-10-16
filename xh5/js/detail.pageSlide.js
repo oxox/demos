@@ -14,26 +14,27 @@ define(function(require, exports, module) {
 		},
 
 		bindEvent: function(){
+			var self = this;
 			this.trigger.bind('click', function(e){
 				e.preventDefault();
 				if ($(this).hasClass('xnav_current')) {
 					return ;
 				}
-				if (pageSlide.isSliding) {
+				if (self.isSliding) {
 					return ;
 				}
-				var idx = pageSlide.trigger.index($(this));
-				pageSlide.slide(idx)
+				var idx = self.trigger.index($(this));
+				self.slide(idx)
 			});
 			this.pageWrap.bind('webkitTransitionEnd', function(e){
-				pageSlide.isSliding = false;
-				pageSlide.pageWrap.css({
+				self.isSliding = false;
+				self.pageWrap.css({
 					'width': '',
 					'-webkit-transform': '',
 					'-webkit-transition': ''
 				});
-				pageSlide.pageWrap.children().eq(pageSlide.curIndex).css('display','block').siblings().css('display','none');
-				pageSlide.trigger.removeClass('xnav_current').eq(pageSlide.curIndex).addClass('xnav_current');
+				self.pageWrap.children().eq(self.curIndex).css('display','block').siblings().css('display','none');
+				self.trigger.removeClass('xnav_current').eq(self.curIndex).addClass('xnav_current');
 			})
 		},
 
@@ -41,22 +42,23 @@ define(function(require, exports, module) {
 			var direction = idx > this.curIndex ? 1 : -1;
 			var newPage = this.pageWrap.children().eq(idx).css('display','block');
 			var pageWidth = $('#J_container').width();
+			var self = this;
 			this.pageWrap.css({
 				'width': '200%',
-				'-webkit-transform': 'translate('+ (idx > pageSlide.curIndex ? 0 : -pageWidth)+'px)',
+				'-webkit-transform': 'translate('+ (idx > self.curIndex ? 0 : -pageWidth)+'px)',
 			});
 
 			window.setTimeout(function(){
-				pageSlide.pageWrap.css({
-					'-webkit-transform': 'translate('+ ((idx > pageSlide.curIndex) ? (-pageWidth) : 0)+'px)',
+				self.pageWrap.css({
+					'-webkit-transform': 'translate('+ ((idx > self.curIndex) ? (-pageWidth) : 0)+'px)',
 					'-webkit-transition':'-webkit-transform 0.3s linear'
 				});
-				pageSlide.curIndex = idx;
+				self.curIndex = idx;
 			}, 10);
 			
 		}
 	}
 
-	pageSlide.init();
+	return pageSlide;
 
 });

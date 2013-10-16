@@ -1,283 +1,244 @@
 /**
 	*zepto.touchslide.js
-	*触屏版slider插件 
+	*触屏版slider插件 AMD
 	*支持webkit
 	*zepto v1.0
 	*@author aronhuang
 	*@version 1.0
-	*@example : zepto('#demo').touchSlider();
 */
 
 
-;(function($){
-	$.fn.touchSlider = function(options) {
-		if(this.length == 0) {
-			return this;
-		}
-		var returnValue, args = arguments;
-		this.each(function() {
-			var instance = $(this).data('_touchSlider');
-			//如果第一个参数是String，则调用相应方法,其他参数作为方法的参数，但必须先生成实例
-			if(typeof(options) == 'string'){
-				//实例已生成
-				if (instance) {
-					var methodName = options;
-					if(typeof(instance[methodName]) === 'function'){
-						args = Array.prototype.slice.call(args, 1 );
-						returnValue = instance[methodName].apply(instance, args);
-					}
-				}
-			}
-			//如果参数是配置对象，则生成实例
-			else {
-				//实例未生成
-				if(!instance){
-					instance = new $.TouchSlider($(this),options);
-					$(this).data('_touchSlider', instance);
-				}
-				//实例已生成 
-				else {
-					return this;
-				}
-			}
-		});
-		//有返回值则返回返回值，无返回值返回调用的对象，保持链式调用
-		return returnValue === undefined ? this : returnValue;
-	};
+define(function(require,exports,module){
+	var $ = require('zepto.js');
 
-	$.fn.getTouchsliderInstance = function(){
-		return this.eq(0).data('_touchSlider');
-	};
-
-	/**
-		CLASS : TouchSlider
-	*/
-	$.TouchSlider = function(object, options) {
-		this.container = object;
+	$.TouchSlider = function(container, options) {
+		this.container = $(container);
 		this.options = $.extend(true, {}, $.TouchSlider.defaults, options);
 		this._init();
-	};
-
+	}
 
 	$.TouchSlider.prototype = {
-
-		constructor: $.TouchSlider,
+		constructor: '$.TouchSlider',
 
 		_init: function(){
-			var opts = this.options, len, totalWidth;
-			this._findElement();
-			this.index = 0;
-			this.support = this._getSupport();
-			this.nodeWidth = this.nodes.eq(0).width();
-			this.length  = this.nodes.length;
-			this.viewport.css({
-				'position': 'relative',
-				'-webkit-transform': 'translate3d(0,0,0)'
-			});
-			this.scroller.css({
+			var opts = this.options;
+			this.viewport = this.container.find('.' + opts.viewportCls);
+			this.slider = this.viewport.children().eq(0) || this.viewport.width(); 
+			this.slides = this.slider.children();
+			this.pagination = this.container.find('.' + opts.paginationCls).children();
+			this.prevBtn = this.container.find('.' + opts.prevCls);
+			this.nextBtn = this.container.find('.' + opts.nextCls);
+			this.slideWidth = this.slides.eq(0).width();
+			this.length = this.slides.length;
+			this.index = isNaN(parseInt(opts.index, 10)) ? 0 : parseInt(opts.index, 10);
+			this.maxIndex = this.length - 1;
+			this.speed = isNaN(parseInt(opts.speed, 10)) ? 0 : parseInt(opts.speed, 10);
+			this.isTouch = 'ontouchstart' in window;
+			this.initialX = opts.center ? (this.viewport.width() - this.slideWidth)/2 : 0; //居中调整
+			this.slider.css({
 				'-webkit-backface-visibility': 'hidden',
 				'-webkit-transition-timing-function': 'cubic-bezier(0,0,0.25,1)',
-				'position': 'absolute',
-				'width': this.nodeWidth * this.length,
-				'margin-left': (this.viewport.width() - this.nodeWidth)/2 //margin-left使当前图片在viewport里居中
-			});		
+				'width': this.slideWidth * this.length
+			});
+			this.slideTo(this.index, 0);
+			this._updateStatus();
 			this._bindEvent();
-			this._createStatus();
-			this._loadImg();
+			var self = this;
+			if (opts.lazyload) {
+				this._loadImg();
+			}
 		},
 
-
-		_loadImg: function(){
-			var img = this.scroller.find('img');
-			var that = this;
-			$.each(img, function(index){
-				if (!$(this).attr('data-src')) {
-					return true;
-				}
-				if (index == that.index || index == that.index - 1 || index == that.index + 1 || that._inViewport($(this))) {
-					var src = $(this).attr('data-src');
-					$(this).attr('src', src).removeClass('data-src');
-				}
+		_bindEvent: function(){
+			var opts = this.options, self = this, 
+				isTouch = this.isTouch, 
+				touchstart = isTouch ? 'touchstart' : 'mousedown',
+				touchmove = isTouch ? 'touchmove' : 'mousemove',
+				touchend = isTouch ? 'touchend' : 'mouseup',
+				resize = isTouch ? 'orientationchange' : 'resize';
+			this.slider.on(touchstart, function(e){
+				self._touchstart(e);
+			}).on('webkitTransitionEnd', function(e){
+				self._transitionEnd();
 			});
 
+			$(document).on(touchmove, function(e){
+				self._touchmove(e);
+			}).on(touchend, function(e){
+				self._touchend(e);
+			});
+
+			this.slides.find('img').on('dragstart', function(e){
+				e.preventDefault();
+			});
+
+			this.prevBtn.on('click', function(e){
+				self.prev();
+			});
+			this.nextBtn.on('click', function(e){
+				self.next();
+			});
+
+			$(window).on(resize, function(e){
+				if (opts.center) {
+					self.initialX = (self.viewport.width() - self.slideWidth)/2;
+					self.slideTo(self.index, 0);
+				}
+			});
+		},
+
+		_updateStatus: function(){
+			var opts = this.options;
+			this.pagination.eq(this.index).addClass(opts.curPageCls).siblings().removeClass(opts.curPageCls);
+			if (this.index == 0) {
+				this.prevBtn.addClass(opts.prevDisabledCls);
+			} else if (this.index == this.maxIndex) {
+				this.nextBtn.addClass(opts.nextDisabledCls);
+			} else {
+				this.prevBtn.removeClass(opts.prevDisabledCls);
+				this.nextBtn.removeClass(opts.nextDisabledCls);
+			}
+		},
+
+		_loadImg: function(){
+			var img = this.slider.find('img'), self = this, opts = this.options, slideIndex = this.index, lazyAttr = opts.lazyload;
+			$.each(img, function(index){
+				if (!$(this).attr(lazyAttr)) {
+					return true;
+				}
+				if (index == slideIndex || index == slideIndex -1 || index == slideIndex + 1 || self._inViewport(this,index)) {
+					var src = $(this).attr(lazyAttr);
+					$(this).attr('src', src).removeAttr(lazyAttr);
+				}
+			});
 		},
 
 
-		_inViewport: function(obj){
-			var left = $(obj).position().left;
+		getIndex: function(){
+			return this.index;
+		},
+
+		_inViewport: function(img,index){
+			var left = $(img).position().left;
 			var viewLeft = this.viewport.position().left;
 			var viewRight = viewLeft + this.viewport.width();
 			if (left >= viewLeft && left <= viewRight ) {
 				return true;
 			}
-			return false;
 		},
 
+		adaptWidth: function(width){
+			this.slideWidth = width;
+			this.slider.css({
+				'width': this.slideWidth * this.length
+			});
+			this.slideTo(this.index, 0);
+		},
 
-		_createStatus: function(){
+		_setPos: function(x, duration){
+			this.slider.css({
+				'-webkit-transform': 'translate3d(' + x + 'px,0,0)',
+				'-webkit-transition-duration': isNaN(duration) ? '' : duration + 'ms'
+			});
+		},
+
+		slideTo: function(index, duration){
+			var x = this.initialX - this.slideWidth * index, duration = isNaN(duration) ? this.options.speed : duration; 
+			this._setPos(x, duration);
+			this.isSliding = true;
+			this.index = index;
+			if (duration == 0) {
+				this._transitionEnd();
+			}
+		},
+
+		prev: function(){
+			var index = this.index - 1;
+			if (index >= 0) {
+				this.slideTo(index);
+			}
+		},
+
+		next: function(){
+			var index = this.index + 1;
+			if (index <= this.maxIndex) {
+				this.slideTo(index);
+			}
+		},
+
+		_transitionEnd: function(){
 			var opts = this.options;
-			if (this.statusList.length == 0) {
-				this.statusList = $('<div />').addClass(opts.statusListCls).appendTo(this.container);
+			this._updateStatus();
+			if (opts.lazyload) {
+				this._loadImg();
 			}
-			var statusNodes = [];
-			for(var i = 0, length = this.length; i < length; i++){
-				statusNodes.push('<i' + (i == this.index ? ' class="' + opts.stasusCurCls +'"' : '') +'></i>');
-			}
-			this.statusList.append(statusNodes.join(''));
-			this.statusNodes = this.statusList.children();
-		},
-
-		_updateStatus: function(){
-			var curCls = this.options.stasusCurCls;
-			this.statusNodes.eq(this.index).addClass(curCls).siblings().removeClass(curCls);
-			$('#test').text(this.index +' 第' + (parseInt($('#test').data('count')) || 0) + '次');
-			$('#test').data('count', (parseInt($('#test').data('count')) || 0) +1);
-		},
-
-		_setPos: function(left, duration){
-			var hasDuration = isNaN(duration) ? false : true, that = this;
-			var css = {
-				'-webkit-transform': 'translate3d(' + left + 'px,0,0)'
-			};
-			if (hasDuration) {
-				css['-webkit-transition-duration'] = duration + 'ms';
-			}
-			this.scroller.css(css);
-		},
-
-
-		_getSupport: function(){
-			return {
-				touch: 'ontouchstart' in window,
-				webkitTransition: "webkitTransition" in document.body.style
-			};
-		},
-
-		_findElement: function(){
-			var opts = this.options;
-			this.viewport = this.container.find('.' + opts.viewportCls);
-			this.scroller = this.viewport.find('.' + opts.scrollerCls);
-			this.nodes = this.scroller.children();
-			this.statusList = this.container.find('.' + opts.statusListCls);
-			this.prevBtn = this.container.find('.' + opts.prevBtnCls);
-			this.nextBtn = this.container.find('.' + opts.nextBtnCls);
-		},
-
-		_bindEvent: function(){
-			var isTouch = this.support.touch, touchstart = 'touchstart', touchmove = 'touchmove', touchend = 'touchend';
-			var that = this;
-			if (!isTouch) {
-				touchstart = 'mousedown';
-				touchmove = 'mousemove';
-				touchend = 'mouseup';
-			}
-
-
-			this.container.bind(touchstart, function(e){
-				that._touchstart(e);
-			});
-			$(document).bind(touchmove, function(e){
-				that._touchmove(e);
-			}).bind(touchend, function(e){
-				that._touchEnd(e);
-			});
-			this.scroller.find('img').bind('dragstart', function(e){
-				e.preventDefault();
-			});
-
-			$(window).bind('resize', function(e){
-				that.scroller.css({
-					'margin-left': (that.viewport.width() - that.nodeWidth)/2 
-				});
-				that._loadImg();
-			});
-			this.scroller.bind('webkitTransitionEnd', function(e){
-				that.isSliding = false;
-				that._updateStatus();
-				that._loadImg()
-			});
-
 		},
 
 		_touchstart: function(e){
-			if (this.isSliding) {
-				return ;
-			}
-			var point = this.support.touch ? e.touches[0] : e; 
-			this.scroller.css({
-				'-webkit-transition-duration': 0 + 'ms',
-			});
+			var point = this.isTouch ? e.touches[0] : e;
 			this.started = true;
-			this.isDirectionX = undefined;
-			this.startX = this.pointX = point.pageX;
-			this.startY = this.pointY = point.pageY;
+			this.startX = point.pageX;
+			this.startY = point.pageY;
+			this.deltaX = 0;
 		},
 
 		_touchmove: function(e){
+			if ( e.touches && e.touches.length > 1 || e.scale && e.scale !== 1) {
+				return ;
+			}
 			if (!this.started) {
 				return ;
 			}
-			if (e.touches && e.touches.length > 1) {
-				return ; 
+			var point = this.isTouch ? e.touches[0] : e,
+				deltaX , newX;
+			this.deltaX = deltaX = point.pageX - this.startX;
+			if(typeof this.isScrolling == 'undefined'){ 
+				this.isScrolling = Math.abs(deltaX) < Math.abs(point.pageY - this.startY);
 			}
-			var point = this.support.touch ? e.touches[0] : e;
-			if(typeof this.isDirectionX == 'undefined'){  
-				var distanceX = point.pageX - this.startX;		
-				var distanceY = point.pageY - this.startY;
-				this.isDirectionX = Math.abs(distanceX) > Math.abs(distanceY);
-			}
-			if (!this.isDirectionX) {
+			if (this.isScrolling) {
 				this.started = false;
-				return;
+				return ;
 			}
 			e.preventDefault();
-			var deltaX = point.pageX - this.startX;
-			//边界反向移动增加阻力
-			if ((this.index == 0 && deltaX > 0) || (this.index == (this.length -1)) && deltaX < 0) {
+			if (this.index == 0 && deltaX > 0 || this.index == this.maxIndex && deltaX < 0) {
 				deltaX = deltaX / 2;
-				deltaX = Math.abs(deltaX) < 100 ? deltaX : deltaX > 0 ? 100 : -100; 
 			}
-			var left = - this.index * this.nodeWidth + deltaX;	
-			this._setPos(left);
+			var newX = -this.index * this.slideWidth + deltaX + this.initialX;
+			this._setPos(newX);
 		},
 
-		_touchEnd: function(e){
-			if (!this.started) { return ; }
-			var point = this.support.touch ? e.changedTouches[0] : e;
-			var distance = point.pageX - this.startX;
-			var deltaIndex = parseInt(distance/this.nodeWidth, 10);
-			var residualDistance = distance % this.nodeWidth;
-			var index = this.index - deltaIndex;
-
-			if (Math.abs(residualDistance) > 10) {
-				index = residualDistance < 0 ? index + 1 : index - 1;
+		_touchend: function(e){
+			if (!this.started) { 
+				return ; 
 			}
-			index = index < 0 ? 0 : index > this.length - 1 ? this.length - 1 : index;
-			this.slideTo(index); 
+			var deltaX = this.deltaX;
+			var isValidSlide = Math.abs(deltaX) > 20 || Math.abs(deltaX) > this.slideWidth * 0.3;
+			var index = this.index;
+			if (isValidSlide) {
+				index = deltaX < 0 ? this.index + 1 : this.index - 1;
+				index = index < 0 ? 0 : index > this.maxIndex ? this.maxIndex : index;
+			} 
+			this.slideTo(index);
 			this.started = false;
-		},
-
-		slideTo: function(index){
-			var left = -this.nodeWidth * index;
-			this._setPos(left, 500);
-			this.isSliding = true;
-			this.index = index;
 		}
 
-
 	}
-
 
 	$.TouchSlider.defaults = {
-		viewportCls: 'J_slider_wrap',
-		scrollerCls: 'J_slider_scroller',
-		prevBtnCls: 'J_slider_prev',
-		nextBtnCls: 'J_slider_next',
-		disabledBtnCls: 'J_slider_disabled',
-		statusListCls: 'J_status',
-		stasusCurCls: 'current'
+		center: false,
+		viewportCls: 'viewport',
+		paginationCls: 'pagination',
+		curPageCls: 'current',
+		prevCls: 'prev',
+		prevDisabledCls: 'prev_disabled',
+		nextCls: 'next',
+		nextDisabledCls: 'next_disabled',
+		speed: 500,
+		index: 0,
+		lazyload: 'lazy-src',
+		isAdaptive: false
 	}
 
-	return $.touchSlider;
+	return $.TouchSlider;
+});
 
-})(Zepto);
