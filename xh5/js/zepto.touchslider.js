@@ -23,33 +23,23 @@ define(function(require,exports,module){
 		_init: function(){
 			var opts = this.options;
 			this.viewport = this.container.find('.' + opts.viewportCls);
-<<<<<<< HEAD
 			this.slider = this.viewport.children().eq(0) || this.viewport.width(); 
 			this.slides = this.slider.children();
 			this.pagination = this.container.find('.' + opts.paginationCls).children();
 			this.prevBtn = this.container.find('.' + opts.prevCls);
 			this.nextBtn = this.container.find('.' + opts.nextCls);
-=======
-			this.slider = this.viewport.children();
-			this.slides = this.slider.children();
-			this.statusList = this.container.find('.' + opts.statusListCls);
->>>>>>> undate
 			this.slideWidth = this.slides.eq(0).width();
 			this.length = this.slides.length;
 			this.index = isNaN(parseInt(opts.index, 10)) ? 0 : parseInt(opts.index, 10);
 			this.maxIndex = this.length - 1;
 			this.speed = isNaN(parseInt(opts.speed, 10)) ? 0 : parseInt(opts.speed, 10);
 			this.isTouch = 'ontouchstart' in window;
-<<<<<<< HEAD
 			this.initialX = opts.center ? (this.viewport.width() - this.slideWidth)/2 : 0; //居中调整
-=======
->>>>>>> undate
 			this.slider.css({
 				'-webkit-backface-visibility': 'hidden',
 				'-webkit-transition-timing-function': 'cubic-bezier(0,0,0.25,1)',
 				'width': this.slideWidth * this.length
 			});
-<<<<<<< HEAD
 			this.slideTo(this.index, 0);
 			this._updateStatus();
 			this._bindEvent();
@@ -182,43 +172,6 @@ define(function(require,exports,module){
 			if (opts.lazyload) {
 				this._loadImg();
 			}
-=======
-			this._bindEvent();
-		},
-
-		_bindEvent: function(){
-			var opts = this.opts, self = this, 
-				isTouch = this.isTouch, 
-				touchstart = isTouch ? 'touchstart' : 'mousedown',
-				touchmove = isTouch ? 'touchmove' : 'mousemove',
-				touchend = isTouch ? 'touchend' : 'mouseup';
-			this.slider.bind(touchstart, function(e){
-				self._touchstart(e);
-			});
-
-			$(document).bind(touchmove, function(e){
-				self._touchmove(e);
-			}).bind(touchend, function(e){
-				self._touchend(e);
-			});
-			this.slides.find('img').bind('dragstart', function(e){
-				e.preventDefault();
-			});
-		},
-
-		_setPos: function(x, duration){
-			this.slider.css({
-				'-webkit-transform': 'translate3d(' + x + 'px,0,0)',
-				'-webkit-transition-duration': isNaN(duration) ? '' : duration + 'ms'
-			});
-		},
-
-		slideTo: function(index, duration){
-			var x = -this.slideWidth * index;
-			this._setPos(x, 500);
-			this.isSliding = true;
-			this.index = index;
->>>>>>> undate
 		},
 
 		_touchstart: function(e){
@@ -226,18 +179,10 @@ define(function(require,exports,module){
 			this.started = true;
 			this.startX = point.pageX;
 			this.startY = point.pageY;
-<<<<<<< HEAD
 			this.deltaX = 0;
 		},
 
 		_touchmove: function(e){
-=======
-
-		},
-
-		_touchmove: function(e){
-			
->>>>>>> undate
 			if ( e.touches && e.touches.length > 1 || e.scale && e.scale !== 1) {
 				return ;
 			}
@@ -258,11 +203,7 @@ define(function(require,exports,module){
 			if (this.index == 0 && deltaX > 0 || this.index == this.maxIndex && deltaX < 0) {
 				deltaX = deltaX / 2;
 			}
-<<<<<<< HEAD
 			var newX = -this.index * this.slideWidth + deltaX + this.initialX;
-=======
-			var newX = -this.index * this.slideWidth + deltaX;
->>>>>>> undate
 			this._setPos(newX);
 		},
 
@@ -284,7 +225,6 @@ define(function(require,exports,module){
 	}
 
 	$.TouchSlider.defaults = {
-<<<<<<< HEAD
 		center: false,
 		viewportCls: 'viewport',
 		paginationCls: 'pagination',
@@ -297,13 +237,6 @@ define(function(require,exports,module){
 		index: 0,
 		lazyload: 'lazy-src',
 		isAdaptive: false
-=======
-		viewportCls: 'viewport',
-		statusListCls: 'statusList',
-		speed: 300,
-		index: 0
-
->>>>>>> undate
 	}
 
 	return $.TouchSlider;
