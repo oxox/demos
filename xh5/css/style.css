@@ -28,7 +28,7 @@ a{text-decoration:none;color:#555;}
 /*==================== 图片浏览 ==================*/
 	.xgallery{background: #fff;}
 		.xgallery_wrap{height: 200px;overflow: hidden;width: 100%;padding: 20px 0;}
-			.xgallery_list li{float: left;display: inline;padding:0 5px;background: url('http://static.gtimg.com/icson/img/common/load.gif') no-repeat center center;}
+			.xgallery_list li{float: left;display: inline;width: 200px;height:200px;padding:0 5px;background: url('http://static.gtimg.com/icson/img/common/load.gif') no-repeat center center;}
 			.xgallery_list img{display: block;width: 200px;}
 		.xgallery_status{display: -webkit-box;height: 3px;}
 			.xgallery_status i{display: block;height: 100%;-webkit-box-flex:1;background: #dcdcdc;}
@@ -38,9 +38,9 @@ a{text-decoration:none;color:#555;}
 
 	.xbiggallery{position: absolute;top:30px;width: 100%;display: none;z-index:1000;}
 		.xbiggallery img{display: block;width: 100%;}
-		.xbiggallery_wrap{overflow: hidden;background: #fff;max-width: 600px;height:300px;margin: 0 auto;min-height: 300px;}
-		.xbiggallery_list{height: 100%;}
-			.xbiggallery_list li{float: left;min-height: 300px;display: inline;background: url('http://static.gtimg.com/icson/img/common/load.gif') no-repeat center center;}
+		.xbiggallery_wrap{overflow: hidden;background: #fff;max-width: 600px;margin: 0 auto;}
+		.xbiggallery_list{width: 100%;}
+			.xbiggallery_list li{float: left;max-width:600px;height:100%;display: inline;background: url('http://static.gtimg.com/icson/img/common/load.gif') no-repeat center center;}
 		.xbiggallery_status{position: absolute;bottom: 15px;text-align: center;width: 100%;}
 			.xbiggallery_status i{display: inline-block;margin:0 5px;width: 8px;height: 8px;border-radius: 10px;background: #fff;border: 1px solid #ccc;}
 			.xbiggallery_status .current{background: #00a0e9;}
@@ -89,6 +89,7 @@ a{text-decoration:none;color:#555;}
 				.xcomment_user{float: left;}
 				.xcomment_date{float: right;}
 	.xcomment_loading{text-align: center;padding: 10px;}
+	.xcomment_loading img{vertical-align: middle;margin-right: 10px;}
 
 
 
@@ -98,7 +99,9 @@ a{text-decoration:none;color:#555;}
 	.xnav a{color: #888;}
 	.xnav a{display: block;margin-left: 10px;text-align: center;height: 30px;line-height: 30px;}
 	.xnav .xnav_buy{position:relative;top:-14px;height:38px;padding-top:10px;margin: 0 0 0 10px;background:-webkit-linear-gradient(top,#ffa211,#f17f11);color: #fff;border: 1px solid #c66100;border-top-left-radius: 5px;border-right: 0;box-shadow: inset 0 2px 0 rgba(255,255,255,.3);}
-	.xnav_buy i{display: inline-block;width: 36px;height: 32px;vertical-align: middle;margin-right: 5px;background: url(../img/ico_cart4.png) no-repeat;background-size: 36px;}
+	.xnav .xnav_buy_disabled{background:-webkit-linear-gradient(top,#d2d2d2,#c0c0c0);color: #666;border-color: #c6c6c6;}
+	.xnav_buy i{display: inline-block;width: 36px;height: 32px;vertical-align: middle;margin-right: 5px;background: url(../img/ico_cart.png) no-repeat;background-size: 36px;}
+	.xnav_buy_disabled i{background-image: url(../img/ico_cart2.png);}
 	.xnav_buy span{display: inline-block;vertical-align: middle;}
 	.xnav .xnav_current{background:-webkit-linear-gradient(top,#616364,#393c3d);color: #fff;border-radius: 3px;}	
 
