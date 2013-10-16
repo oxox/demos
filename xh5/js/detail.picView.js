@@ -5,10 +5,7 @@ define(function(require, exports, module) {
 	var $ = require('zepto.js');
 	var Slider = require('zepto.touchslider');
 	var gallery;
-<<<<<<< HEAD
 	var bigGallery;
-=======
->>>>>>> undate
 	var picView = {
 		imagesData: DETAIL_DATA.images,
 
@@ -24,7 +21,6 @@ define(function(require, exports, module) {
 			var galleryHtml = [];
 			var pagesHtml = [];
 			for(var i = 0, length = this.imagesData.length; i < length; i++){
-<<<<<<< HEAD
 				galleryHtml.push('<li><img lazy-src="'+ this.imagesData[i] +'" src="'+ this.placeholderSrc +'" /></li>');
 				pagesHtml.push('<i></i>');
 			}
@@ -34,14 +30,6 @@ define(function(require, exports, module) {
 			$('#J_bigGallery .xbiggallery_status').append(pagesHtml.join(''));
 			gallery = new Slider('#J_gallery', {
 				center: true,
-=======
-				galleryHtml.push('<li><img src="'+ this.imagesData[i] +'" data-src="'+ this.placeholderSrc +'" /></li>');
-			}
-			$('#J_gallery .xgallery_list').append(galleryHtml.join(''));
-			$('#J_bigGallery .xbiggallery_list').append(galleryHtml.join('').replace(/\/mm\//g, '/mpic/'));
-
-			gallery = new Slider('#J_gallery', {
->>>>>>> undate
 				viewportCls: 'xgallery_wrap',
 				scrollerCls: 'xgallery_list',
 				paginationCls: 'xgallery_status'
@@ -51,14 +39,9 @@ define(function(require, exports, module) {
 		bindEvent: function(){
 			var self = this, resize = 'ontouchstart' in window ? 'orientationchange' : 'resize';
 			$('#J_gallery .xgallery_list li').bind('click', function(e){
-<<<<<<< HEAD
 				self.showBigGallery();
-=======
-				//picView.showBigGallery();
->>>>>>> undate
 			});
 			$('#J_mask').bind('click', function(){
-<<<<<<< HEAD
 				self.hideBigGallery();
 			});
 			$('#J_bigGallery').bind('click', function(){
@@ -70,9 +53,6 @@ define(function(require, exports, module) {
 					$('#J_bigGallery .xbiggallery_list').children().width(bigGlleryWidth).height(bigGlleryWidth);
 					bigGallery.adaptWidth(bigGlleryWidth);
 				}
-=======
-				//picView.hideBigGallery();
->>>>>>> undate
 			});
 		},
 
