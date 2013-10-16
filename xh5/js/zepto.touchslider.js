@@ -21,6 +21,7 @@ define(function(require,exports,module){
 		constructor: '$.TouchSlider',
 
 		_init: function(){
+<<<<<<< HEAD
 			var opts = this.options;
 			this.viewport = this.container.find('.' + opts.viewportCls);
 <<<<<<< HEAD
@@ -183,6 +184,24 @@ define(function(require,exports,module){
 				this._loadImg();
 			}
 =======
+=======
+			var opts = this.options;
+			this.viewport = this.container.find('.' + opts.viewportCls);
+			this.slider = this.viewport.children();
+			this.slides = this.slider.children();
+			this.statusList = this.container.find('.' + opts.statusListCls);
+			this.slideWidth = this.slides.eq(0).width();
+			this.length = this.slides.length;
+			this.index = isNaN(parseInt(opts.index, 10)) ? 0 : parseInt(opts.index, 10);
+			this.maxIndex = this.length - 1;
+			this.speed = isNaN(parseInt(opts.speed, 10)) ? 0 : parseInt(opts.speed, 10);
+			this.isTouch = 'ontouchstart' in window;
+			this.slider.css({
+				'-webkit-backface-visibility': 'hidden',
+				'-webkit-transition-timing-function': 'cubic-bezier(0,0,0.25,1)',
+				'width': this.slideWidth * this.length
+			});
+>>>>>>> 494784c8b342bc0a340cae55c8b414b964feb07e
 			this._bindEvent();
 		},
 
@@ -218,7 +237,10 @@ define(function(require,exports,module){
 			this._setPos(x, 500);
 			this.isSliding = true;
 			this.index = index;
+<<<<<<< HEAD
 >>>>>>> undate
+=======
+>>>>>>> 494784c8b342bc0a340cae55c8b414b964feb07e
 		},
 
 		_touchstart: function(e){
@@ -226,6 +248,7 @@ define(function(require,exports,module){
 			this.started = true;
 			this.startX = point.pageX;
 			this.startY = point.pageY;
+<<<<<<< HEAD
 <<<<<<< HEAD
 			this.deltaX = 0;
 		},
@@ -238,6 +261,13 @@ define(function(require,exports,module){
 		_touchmove: function(e){
 			
 >>>>>>> undate
+=======
+
+		},
+
+		_touchmove: function(e){
+			
+>>>>>>> 494784c8b342bc0a340cae55c8b414b964feb07e
 			if ( e.touches && e.touches.length > 1 || e.scale && e.scale !== 1) {
 				return ;
 			}
@@ -259,10 +289,14 @@ define(function(require,exports,module){
 				deltaX = deltaX / 2;
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
 			var newX = -this.index * this.slideWidth + deltaX + this.initialX;
 =======
 			var newX = -this.index * this.slideWidth + deltaX;
 >>>>>>> undate
+=======
+			var newX = -this.index * this.slideWidth + deltaX;
+>>>>>>> 494784c8b342bc0a340cae55c8b414b964feb07e
 			this._setPos(newX);
 		},
 
@@ -285,6 +319,7 @@ define(function(require,exports,module){
 
 	$.TouchSlider.defaults = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		center: false,
 		viewportCls: 'viewport',
 		paginationCls: 'pagination',
@@ -298,12 +333,17 @@ define(function(require,exports,module){
 		lazyload: 'lazy-src',
 		isAdaptive: false
 =======
+=======
+>>>>>>> 494784c8b342bc0a340cae55c8b414b964feb07e
 		viewportCls: 'viewport',
 		statusListCls: 'statusList',
 		speed: 300,
 		index: 0
 
+<<<<<<< HEAD
 >>>>>>> undate
+=======
+>>>>>>> 494784c8b342bc0a340cae55c8b414b964feb07e
 	}
 
 	return $.TouchSlider;

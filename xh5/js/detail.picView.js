@@ -6,9 +6,12 @@ define(function(require, exports, module) {
 	var Slider = require('zepto.touchslider');
 	var gallery;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	var bigGallery;
 =======
 >>>>>>> undate
+=======
+>>>>>>> 494784c8b342bc0a340cae55c8b414b964feb07e
 	var picView = {
 		imagesData: DETAIL_DATA.images,
 
@@ -25,6 +28,7 @@ define(function(require, exports, module) {
 			var pagesHtml = [];
 			for(var i = 0, length = this.imagesData.length; i < length; i++){
 <<<<<<< HEAD
+<<<<<<< HEAD
 				galleryHtml.push('<li><img lazy-src="'+ this.imagesData[i] +'" src="'+ this.placeholderSrc +'" /></li>');
 				pagesHtml.push('<i></i>');
 			}
@@ -35,13 +39,18 @@ define(function(require, exports, module) {
 			gallery = new Slider('#J_gallery', {
 				center: true,
 =======
+=======
+>>>>>>> 494784c8b342bc0a340cae55c8b414b964feb07e
 				galleryHtml.push('<li><img src="'+ this.imagesData[i] +'" data-src="'+ this.placeholderSrc +'" /></li>');
 			}
 			$('#J_gallery .xgallery_list').append(galleryHtml.join(''));
 			$('#J_bigGallery .xbiggallery_list').append(galleryHtml.join('').replace(/\/mm\//g, '/mpic/'));
 
 			gallery = new Slider('#J_gallery', {
+<<<<<<< HEAD
 >>>>>>> undate
+=======
+>>>>>>> 494784c8b342bc0a340cae55c8b414b964feb07e
 				viewportCls: 'xgallery_wrap',
 				scrollerCls: 'xgallery_list',
 				paginationCls: 'xgallery_status'
@@ -52,12 +61,17 @@ define(function(require, exports, module) {
 			var self = this, resize = 'ontouchstart' in window ? 'orientationchange' : 'resize';
 			$('#J_gallery .xgallery_list li').bind('click', function(e){
 <<<<<<< HEAD
+<<<<<<< HEAD
 				self.showBigGallery();
 =======
 				//picView.showBigGallery();
 >>>>>>> undate
+=======
+				//picView.showBigGallery();
+>>>>>>> 494784c8b342bc0a340cae55c8b414b964feb07e
 			});
 			$('#J_mask').bind('click', function(){
+<<<<<<< HEAD
 <<<<<<< HEAD
 				self.hideBigGallery();
 			});
@@ -73,6 +87,9 @@ define(function(require, exports, module) {
 =======
 				//picView.hideBigGallery();
 >>>>>>> undate
+=======
+				//picView.hideBigGallery();
+>>>>>>> 494784c8b342bc0a340cae55c8b414b964feb07e
 			});
 		},
 
