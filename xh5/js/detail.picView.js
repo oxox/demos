@@ -49,7 +49,7 @@ define(function(require, exports, module) {
 			});
 			$(window).bind(resize, function(e){
 				if (bigGallery) {
-					var bigGlleryWidth = Math.min($(window).width(), 600);
+					var bigGlleryWidth = Math.min($(window).width(), 400);
 					$('#J_bigGallery .xbiggallery_list').children().width(bigGlleryWidth).height(bigGlleryWidth);
 					bigGallery.adaptWidth(bigGlleryWidth);
 				}
@@ -61,7 +61,7 @@ define(function(require, exports, module) {
 			$('#J_bigGallery').show();
 			var index = gallery.getIndex();
 			if (!bigGallery) {
-				var bigGlleryWidth = Math.min($(window).width(), 600);
+				var bigGlleryWidth = Math.min($(window).width(), 400);
 				$('#J_bigGallery .xbiggallery_list').children().width(bigGlleryWidth).height(bigGlleryWidth);
 				bigGallery = new Slider('#J_bigGallery', {
 					index: index,

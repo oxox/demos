@@ -233,7 +233,7 @@ define(function(require,exports,module){
 		prevDisabledCls: 'prev_disabled',
 		nextCls: 'next',
 		nextDisabledCls: 'next_disabled',
-		speed: 500,
+		speed: 300,
 		index: 0,
 		lazyload: 'lazy-src',
 		isAdaptive: false
