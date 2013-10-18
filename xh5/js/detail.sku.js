@@ -11,11 +11,11 @@ define(function(require, exports, module) {
 		},
 
 		reader: function(){
-
+			//根据sku数据生成dom
 		},
 
 		getSelectedSku: function(){
-
+			//返回选择的sku
 		},
 
 		bindEvent: function(){
@@ -32,7 +32,6 @@ define(function(require, exports, module) {
 			});
 		}
 	};
-	sku.init();
 
 	return sku;
 });
