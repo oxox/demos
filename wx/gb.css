@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+	*{margin:0; padding:0; list-style:none; border:0 none;}
+	
+	body{
+		margin:0 auto;
+		min-width:320px;
+		max-width:1024px;
+		font-size:14px;
+		color:#444;
+		-webkit-text-size-adjust:100%;
+		background: #F1F1F1;
+	}
+
+	a{text-decoration:none; color:#333;}
+	img{vertical-align:top;}
+
+	/*===== 文本色 =====*/
+		.c_tx0{color:#4F89DA;}/* 蓝色 */
+		.c_tx1{color:#C73D00;}/* 红色 */
+		.c_tx2{color:#666666;}/* 灰色 */
+		.c_tx3{color:#999999;}/* 弱化文本色 */
+
+
+	/*===== 按钮 =====*/
+		.mod_btn{display:inline-block; height: 34px; padding: 0 15px; line-height: 34px; text-shadow: 0 1px 1px rgba(0,0,0,.2); color:#FFF; font-size:14px; box-shadow:0 1px 0 #FFAF4F inset; background-color:#FE8A03; border:1px solid #E5810F; border-radius:4px;}
+		.mod_btn:hover,
+		.mod_btn:active{background:#FC951D;}
+
+			/*===== 按钮颜色 =====*/
+				/* 蓝色按钮 */
+					.mod_btn_bg1{border:1px solid #1C6DC8; background:#2A7EDE;background:-webkit-gradient(linear, 0 0, 0 100%, from(#3184E4), to(#2076D9));box-shadow:0 1px 0 #7AB3F6 inset;}
+					.mod_btn_bg1:hover,
+					.mod_btn_bg1:active{background:#3184E2;background:-webkit-gradient(linear, 0 0, 0 100%, from(#2076D9), to(#3184E4));}
+
+				/* 绿色按钮 */
+					.mod_btn_bg2{border:1px solid #656A66;box-shadow:1px 1px 0 #96D89B inset, -1px -1px 0 #96D89B inset;background:#03940E;background:-webkit-gradient(linear, 0 0, 0 100%, from(#51BF5A), to(#03940E));}
+					.mod_btn_bg2:hover,
+					.mod_btn_bg2:active{box-shadow:1px 1px 0 #52AD5A inset, -1px -1px 0 #52AD5A inset;background:#066C10;background:-webkit-gradient(linear, 0 0, 0 100%, from(#2B9B35), to(#00660A));}
+
+				/* 灰色按钮 */
+					.mod_btn_bg3{color:#333333;border:1px solid #656A66;text-shadow:none;box-shadow:1px 1px 0 #FFFFFF inset, -1px -1px 0 #FFFFFF inset;background:#BEBEBE;background:-webkit-gradient(linear, 0 0, 0 100%, from(#EEEDEE), to(#BEBEBE));}
+					.mod_btn_bg3:hover,
+					.mod_btn_bg3:active{background:#EBEBEB;background:-webkit-gradient(linear, 0 0, 0 100%, from(#EEEDEE), to(#EBEBEB));}
+
+				/* 白色按钮 */
+					.mod_btn_bg4{color:#333333;border:1px solid #FFFFFF;text-shadow:none;box-shadow: 0 1px 1px rgba(0,0,0,.2);background:#FFFFFF;}
+					.mod_btn_bg4:hover,
+					.mod_btn_bg4:active{background:#F9F9F9;}
+
+				/* 失效按钮 */
+					.mod_btn_bg5,
+					.mod_btn_bg5:hover,
+					.mod_btn_bg5:active{color:#DDDDDD;cursor:default;border:1px solid #666;text-shadow:none;box-shadow:1px 1px 0 #838383 inset, -1px -1px 0 #838383 inset;box-shadow:1px 1px 0 #838383 inset, -1px -1px 0 #838383 inset;background:#03940E;background:-webkit-gradient(linear, 0 0, 0 100%, from(#8B8B8B), to(#6E6E6E));}
+
+
+			/*===== 按钮尺寸 =====*/
+				.mod_btn_large{height: 42px;line-height: 42px;font-size:16px;}
+				.mod_btn_small{height: 26px;line-height: 26px;font-size:12px;}
+
+
+	/*=====  =====*/
