@@ -4,7 +4,7 @@
     /* demo英文编号 */
     "ename": "ecd.yixun.xdemohello",
     /* demo描述 */
-    "descrition": "XDEMO测试演示脚本"
+    "descrition": "XDEMO测试演示脚本",
     /* demo版本 */
     "version": "1.0.0",
     /* demo演示的页面（正则表达式） */
