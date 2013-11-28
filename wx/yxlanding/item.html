@@ -47,7 +47,7 @@
                         landing = utils.getUrlParam('landing'),
                         data = goods[parseInt(testId)||0]||goods[0];
                     if(landing==='1'){
-                        this.go('http://oxox.io/demos/wx/yxlanding/index.html?id='+testId);
+                        this.go('http://oxox.io/demos/wx/yxlanding/bridge.html?id='+testId);
                         return;
                     }
                     this.load(data.url);
