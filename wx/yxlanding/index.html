@@ -12,7 +12,7 @@
     <script src="http://twitter.github.com/hogan.js/builds/2.0.0/hogan-2.0.0.js"></script>
     <style>
         *{margin:0;padding:0}
-        body{line-height:1.4;font-size:14px;color:#333;-webkit-text-size-adjust:none;font-family:"ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3";}
+        body{line-height:1.4;font-size:14px;color:#333;-webkit-text-size-adjust:none;font-family:"ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3";-webkit-text-size-adjust:none;}
         fieldset,img{border:0}
         a{text-decoration:none;color:#444;}
         i{font-style:normal;}
@@ -20,13 +20,14 @@
         .cfx:after{content:"";display:table;clear:both;}
         .fl{float:left;display: inline;}
         .fr{float:right;display: inline;}
+        .ilb{display: inline-block;}
         html,body{display: block;height:100%;overflow: hidden;}
         iframe{border:0;width:100%;height:100%;}
         .ico{display:inline-block;background:url(ico.png) 0 0 no-repeat;width:32px;height:32px;vertical-align: middle;}
         .ico_review{background-position: 0 -32px;}
         .ico_yixun{background-position: 0 -64px;width:102px;}
         .ico_price{font-family: arial;}
-        .item{width:390px;margin:0 auto;padding-top:125px;padding-bottom: 125px;}
+        .item{margin:0 auto;padding:125px 15px;text-align: center;}
         .item .title{color:#666;font-size: 30px;height:30px;line-height: 30px;overflow: hidden;text-overflow:ellipsis;margin-bottom: 15px;}
         .item .meta{margin-bottom: 65px;}
         .item .album{text-align: center;margin-bottom: 65px;}
@@ -37,7 +38,7 @@
             .sns .ico{margin-right: 5px;margin-top:-2px;}
         .item .like{color:#ff7e7e;}
         .item .review{color:#8ed2bd;}
-        .item .sns_split{width:0;height:32px;border-right:3px solid #f2f2f2;margin:0 25px;}
+        .item .sns_split{width:0;height:32px;border-right:3px solid #f2f2f2;margin:0 20px;}
     </style>
     
     <script>
@@ -96,19 +97,19 @@
     <article id='J_item' class="item">
 
         <h1 class="title">4口USB充电器，出差必备</h1>
-        <div class="meta cfx">
-            <div class="fl desc">奥睿智科ipad电脑手机4口充电器</div>
-            <div class="fl price"><i class="ico_price">&yen;</i>2888.00</div>
+        <div class="meta">
+            <div class="ilb desc">奥睿智科ipad电脑手机4口充电器</div>
+            <div class="ilb price"><i class="ico_price">&yen;</i>2888.00</div>
         </div>
         <div class="album">
             <img src="http://img1.icson.com/product/pic200/19/062/19-062-10317.jpg" alt="4口USB充电器，出差必备" width="200" height="200" />
         </div>
         <div class="sns cfx">
-            <div class="fl sns_col like"><i class="ico ico_like"></i><strong>117</strong></div>
-            <div class="fl sns_split"></div>
-            <div class="fl sns_col review"><i class="ico ico_review"></i><strong>2228</strong></div>
-            <div class="fl sns_split"></div>
-            <div class="fl sns_col yixun"><a href="{{cartUrl}}"><i class="ico ico_yixun"></i></a></div>
+            <div class="ilb sns_col like"><i class="ico ico_like"></i><strong>117</strong></div>
+            <div class="ilb sns_split"></div>
+            <div class="ilb sns_col review"><i class="ico ico_review"></i><strong>2228</strong></div>
+            <div class="ilb sns_split"></div>
+            <div class="ilb sns_col yixun"><a href="{{cartUrl}}"><i class="ico ico_yixun"></i></a></div>
         </div>
 
 
