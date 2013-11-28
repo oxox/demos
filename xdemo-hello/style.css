@@ -1,0 +1,8 @@
+.xdemo-hello{position: fixed;left:0;top:0;right:0;bottom:0;z-index: 10004;}
+.xdemo-hello-bg{position: absolute;left:0;top:0;right:0;bottom:0;z-index: 1;background-color: #000;opacity: .9;}
+.xdemo-hello-hd{position: absolute;left:0;top:0;right:0;height:30px;z-index: 3;}
+.xdemo-hello-hd h3{font-size:18px;padding-left:15px;line-height: 30px;}
+.xdemo-hello-bd{position: relative;background-color: #fff;border-radius:2px;width:600px;height:100%;z-index: 1;margin:0 auto;overflow-y:auto }
+.xdemo-hello-inner{padding:50px 10px;}
+.xdemo-hello-inner img{float:left;display: inline;margin:5px;box-shadow: 2px 2px 3px rgba(0,0,0,.3);max-width: 550px;-webkit-transition:all .1s ease-out;}
+.xdemo-hello-inner img:hover{box-shadow: 3px 3px 4px rgba(0,0,0,.4);-webkit-transform:scale(1.05) rotateY(10deg);-webkit-transform-origin:50% 100%;}

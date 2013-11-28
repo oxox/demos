@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>易迅微信分享跳转页</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <script src="http://42.120.1.172/touch/js/zepto.min.js"></script>
+    <script src="http://twitter.github.com/hogan.js/builds/2.0.0/hogan-2.0.0.js"></script>
+    <style>
+        *{margin:0;padding:0}
+        body{line-height:1.4;font-size:14px;color:#333;-webkit-text-size-adjust:none;font-family:"ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3";}
+        fieldset,img{border:0}
+        a{text-decoration:none;color:#444;}
+        i{font-style:normal;}
+        ul,li {list-style:none;}
+        .cfx:after{content:"";display:table;clear:both;}
+        .fl{float:left;display: inline;}
+        .fr{float:right;display: inline;}
+        html,body{display: block;height:100%;overflow: hidden;}
+        iframe{border:0;width:100%;height:100%;}
+        .ico{display:inline-block;background:url(ico.png) 0 0 no-repeat;width:32px;height:32px;vertical-align: middle;}
+        .ico_review{background-position: 0 -32px;}
+        .ico_yixun{background-position: 0 -64px;width:102px;}
+        .ico_price{font-family: arial;}
+        .item{width:390px;margin:0 auto;padding-top:125px;padding-bottom: 125px;}
+        .item .title{color:#666;font-size: 30px;height:30px;line-height: 30px;overflow: hidden;text-overflow:ellipsis;margin-bottom: 15px;}
+        .item .meta{margin-bottom: 65px;}
+        .item .album{text-align: center;margin-bottom: 65px;}
+        .item .desc,.item .price{color:#999999;font-size: 18px;height:27px;line-height: 27px;}
+        .item .desc{width:265px;overflow: hidden;text-overflow:ellipsis;}
+        .item .price{margin-left:30px;width:90px;overflow: hidden;text-overflow:ellipsis;}
+        .item .sns{height:32px;line-height: 32px;font-size: 30px;}
+            .sns .ico{margin-right: 5px;margin-top:-2px;}
+        .item .like{color:#ff7e7e;}
+        .item .review{color:#8ed2bd;}
+        .item .sns_split{width:0;height:32px;border-right:3px solid #f2f2f2;margin:0 25px;}
+    </style>
+    
+    <script>
+
+        var utils = (function($){
+            var pub = {};
+            pub.getUrlParam = function (name) {
+                var paramStr = location.search;
+                if (paramStr.length == 0) return null;
+                if (paramStr.charAt(0) != '?') return null;
+                paramStr = unescape(paramStr);
+                paramStr = paramStr.substring(1);
+                if (paramStr.length == 0) return null;
+                var params = paramStr.split('&');
+                for (var i = 0; i < params.length; i++) {
+                        var parts = params[i].split('=', 2);
+                        if (parts[0] == name) {
+                                if (parts.length < 2 || typeof (parts[1]) == "undefined" || parts[1] == "undefined" || parts[1] == "null") return "";
+                                return parts[1];
+                        }
+                }
+                return null;
+            };
+            return pub;
+
+        })(Zepto),
+        jumper = (function($){
+            var pub = {
+                init:function(){
+                    var data = {
+                        url : utils.getUrlParam('url'),
+                        title : utils.getUrlParam('title'),
+                        desc : utils.getUrlParam('desc'),
+                        price : utils.getUrlParam('price'),
+                        landing:utils.getUrlParam('landing')
+                    };
+                    if(landing==='1'){
+                        this.go('http://oxox.io/demos/wx/yxlanding/index.html?'+$.param(data));
+                        return;
+                    }
+                    this.load(data.url);
+                },
+                go:function(url){
+                    location.href = url;
+                },
+                load:function(url){
+                    document.getElementById('J_frame').src=url;
+                }
+            };
+            return pub;
+        })(Zepto);
+        
+    </script>
+</head>
+<body>
+    <article id='J_item' class="item">
+
+        <h1 class="title">4口USB充电器，出差必备</h1>
+        <div class="meta cfx">
+            <div class="fl desc">奥睿智科ipad电脑手机4口充电器</div>
+            <div class="fl price"><i class="ico_price">&yen;</i>2888.00</div>
+        </div>
+        <div class="album">
+            <img src="http://img1.icson.com/product/pic200/19/062/19-062-10317.jpg" alt="4口USB充电器，出差必备" width="200" height="200" />
+        </div>
+        <div class="sns cfx">
+            <div class="fl sns_col like"><i class="ico ico_like"></i><strong>117</strong></div>
+            <div class="fl sns_split"></div>
+            <div class="fl sns_col review"><i class="ico ico_review"></i><strong>2228</strong></div>
+            <div class="fl sns_split"></div>
+            <div class="fl sns_col yixun"><a href="{{cartUrl}}"><i class="ico ico_yixun"></i></a></div>
+        </div>
+
+
+        <script id="J_itemTpl" type="text/hogan-tpl">
+            <h1>{{title}}</h1>
+            <div class="meta cfx">
+                <div class="fl desc">{{desc}}</div>
+                <div class="fl price"><i class="ico_price">&yen;</i>{{price}}</div>
+            </div>
+            <div class="album">
+
+            </div>
+            <div class="sns cfx">
+                <div class="like"><i class="ico_heart"></i><strong>{{like}}</strong></div>
+                <div class="review"><i class="ico_review"></i><strong>{{review}}</strong></div>
+                <div class="yixun"><a href="{{cartUrl}}"><i class="ico_yixun"></i></a></div>
+            </div>
+        </script>
+    </article>
+    
+</body>
+</html>
