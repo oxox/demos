@@ -37,9 +37,12 @@
         .item .price{margin-left:15px;width:70px;overflow: hidden;text-overflow:ellipsis;}
         .item .sns{height:18px;line-height: 18px;font-size: 18px;}
             .sns .ico{margin-right: 5px;margin-top:-2px;}
-        .item .like a{color:#ff7e7e;}
+        .item .like{position: relative;}
+        .item .like a,.item .ico_plus{position:relative;z-index:2;color:#ff7e7e;}
+        .item .ico_plus{position: absolute;z-index:1;right:0;width:24px;height:24px;line-height: 24px;text-align: center;-webkit-transition:all .35s ease;opacity: 0;top:0;}
+        .item .ico_plus_on{top:-24px;opacity: 1;}
         .item .review a{color:#8ed2bd;}
-        .item .sns_split{width:0;height:18px;border-right:3px solid #f2f2f2;margin:0 10px;}
+        .item .sns_split{width:0;height:18px;border-right:3px solid #f2f2f2;margin:-2px 10px 0;vertical-align: middle;}
     </style>
     
     <script>
@@ -80,12 +83,48 @@
                     this.tpl = document.getElementById('J_itemTpl').innerHTML;
 
                     this.render(data);
+
+                    $('#J_btnLike').on('click',function(e){
+                        view.showBubble();
+                        return false;
+                    });
+                    this.likeNum = parseInt(document.getElementById('J_likeNum').innerHTML)||0;
+                    this.$icoPlus = $('#J_icoPlus');
+
+                },
+                bindTransition:function(){
+                    this.$icoPlus.onTransitioned(function(){
+                        view.hideBubble();
+                    });
+                },
+                showBubble:function(){
+                    this.bindTransition();
+                    this.$icoPlus.addClass('ico_plus_on');
+                    this.likeNum++;
+                    document.getElementById('J_likeNum').innerHTML = this.likeNum;
+                },
+                hideBubble:function(){
+                    this.$icoPlus.onTransitioned(false).removeClass('ico_plus_on');
                 },
                 render:function(data){
                     document.getElementById('J_item').innerHTML=utils.toHtml(this.tpl,data);
                 }
             };
             return pub;
+        })(Zepto);
+
+        ;(function($){
+            $.extend($.fn, {
+                onTransitioned: function(cbk){
+                    return this.each(function () {
+                        if (cbk===false) {
+                            $(this).unbind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd");
+                            return;
+                        }
+                        $(this).bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", cbk);
+                    });
+                }//onTransitioned
+            });
         })(Zepto);
         
     </script>
@@ -102,7 +141,10 @@
             <img src="http://img1.icson.com/product/pic200/19/062/19-062-10317.jpg" alt="4口USB充电器，出差必备" width="200" height="200" />
         </div>
         <div class="sns cfx">
-            <div class="ilb sns_col like"><a href="javascript:;"><i class="ico ico_like"></i><strong>117</strong></a></div>
+            <div class="ilb sns_col like">
+                <a id="J_btnLike" href="javascript:;"><i class="ico ico_like"></i><strong id="J_likeNum">117</strong></a>
+                <i id="J_icoPlus" class="ico_plus">+1</i>
+            </div>
             <div class="ilb sns_split sns_split1"></div>
             <div class="ilb sns_col review"><a href="{{reviewUrl}}"><i class="ico ico_review"></i><strong>2228</strong></a></div>
             <div class="ilb sns_split sns_split2"></div>
@@ -120,7 +162,10 @@
             <img src="{{pic}}" alt="{{title}}" width="200" height="200" />
         </div>
         <div class="sns cfx">
-            <div class="ilb sns_col like"><a href="javascript:;"><i class="ico ico_like"></i><strong>{{like}}</strong></a></div>
+            <div class="ilb sns_col like">
+                <a id="J_btnLike" href="javascript:;"><i class="ico ico_like"></i><strong id="J_likeNum">{{like}}</strong></a>
+                <i id="J_icoPlus" class="ico_plus">+1</i>
+            </div>
             <div class="ilb sns_split sns_split1"></div>
             <div class="ilb sns_col review"><a href="{{reviewUrl}}"><i class="ico ico_review"></i><strong>{{review}}</strong><a></div>
             <div class="ilb sns_split sns_split2"></div>
