@@ -10,7 +10,7 @@ var goods = [{
       review2:11,
       review3:2,
       pic:'http://img1.icson.com/product/pic200/21/058/21-058-88607.jpg',
-      qrcode:'http://oxox.io/demos/wx/yxlanding/img/1.jpg'
+      qrcode:'http://oxox.io/demos/wx/yxlanding/img/1.png'
   },{
       url:'http://m.51buy.com/event_static/oneprod_159.html?eventid=159',
       cartUrl:'http://m.51buy.com/t/detail/?pid=682350&channelId=0',
@@ -23,7 +23,7 @@ var goods = [{
       review2:4,
       review3:1,
       pic:'http://img2.icson.com/product/pic200/19/025/19-025-10156.jpg',
-      qrcode:'http://oxox.io/demos/wx/yxlanding/img/2.jpg'
+      qrcode:'http://oxox.io/demos/wx/yxlanding/img/2.png'
   },{
       url:'http://m.51buy.com/event_static/oneprod_109.html?eventid=109',
       cartUrl:'http://m.51buy.com/t/detail/?pid=1259340&channelId=',
@@ -36,5 +36,5 @@ var goods = [{
       review2:9,
       review3:17,
       pic:'http://img2.icson.com/product/pic200/21/057/21-057-10094.jpg',
-      qrcode:'http://oxox.io/demos/wx/yxlanding/img/3.jpg'
+      qrcode:'http://oxox.io/demos/wx/yxlanding/img/3.png'
   }];
