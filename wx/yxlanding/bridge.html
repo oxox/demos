@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>易迅微信分享跳转页</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <script src="http://42.120.1.172/touch/js/zepto.min.js"></script>
+    <script src="http://twitter.github.com/hogan.js/builds/2.0.0/hogan-2.0.0.js"></script>
+    <script src="js/data.js"></script>
+    <style>
+        *{margin:0;padding:0}
+        body{line-height:1.4;font-size:14px;color:#333;-webkit-text-size-adjust:none;font-family:"ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3";-webkit-text-size-adjust:none;}
+        fieldset,img{border:0}
+        a{text-decoration:none;color:#444;}
+        i{font-style:normal;}
+        ul,li {list-style:none;}
+        .cfx:after{content:"";display:table;clear:both;}
+        .fl{float:left;display: inline;}
+        .fr{float:right;display: inline;}
+        .ilb{display: inline-block;}
+        html,body{display: block;height:100%;}
+        iframe{border:0;width:100%;height:100%;}
+        .ico{display:inline-block;background:url(img/ico.png) 0 0 no-repeat;width:16px;height:16px;vertical-align: middle;}
+        .ico_review{background-position: 0 -16px;}
+        .ico_yixun{background-position: 0 -32px;width:51px;}
+        .ico_price{font-family: arial;}
+        .item{margin:0 auto;padding:60px 10px;text-align: center;}
+        .item .title{color:#666;font-size: 18px;height:18px;line-height: 18px;overflow: hidden;text-overflow:ellipsis;margin-bottom: 15px;}
+        .item .meta{margin-bottom: 30px;}
+        .item .album{text-align: center;margin-bottom: 30px;}
+        .item .desc,.item .price{color:#999999;font-size: 14px;height:14px;line-height: 14px;}
+        .item .desc{width:200px;overflow: hidden;text-overflow:ellipsis;}
+        .item .price{margin-left:15px;width:70px;overflow: hidden;text-overflow:ellipsis;}
+        .item .sns{height:18px;line-height: 18px;font-size: 18px;}
+            .sns .ico{margin-right: 5px;margin-top:-2px;}
+        .item .like a{color:#ff7e7e;}
+        .item .review a{color:#8ed2bd;}
+        .item .sns_split{width:0;height:18px;border-right:3px solid #f2f2f2;margin:0 10px;}
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            /* Retina-specific stuff here */
+            .ico{width:32px;height:32px;background:url(img/ico_2x.png) 0 0 no-repeat; }
+            .ico_review{background-position: 0 -32px;}
+            .ico_yixun{background-position: 0 -64px;width:102px;}
+        }
+    </style>
+    
+    <script>
+
+        var utils = (function($){
+            var pub = {};
+            pub.getUrlParam = function (name) {
+                var paramStr = location.search;
+                if (paramStr.length == 0) return null;
+                if (paramStr.charAt(0) != '?') return null;
+                paramStr = unescape(paramStr);
+                paramStr = paramStr.substring(1);
+                if (paramStr.length == 0) return null;
+                var params = paramStr.split('&');
+                for (var i = 0; i < params.length; i++) {
+                        var parts = params[i].split('=', 2);
+                        if (parts[0] == name) {
+                                if (parts.length < 2 || typeof (parts[1]) == "undefined" || parts[1] == "undefined" || parts[1] == "null") return "";
+                                return parts[1];
+                        }
+                }
+                return null;
+            };
+            pub.toHtml = function(tpl,obj,ext){tpl = Hogan.compile(tpl);return (tpl.render(obj,ext));};
+            return pub;
+
+        })(Zepto),
+        view = (function($){
+            var pub = {
+                init:function(){
+                    var testId = utils.getUrlParam('id'),
+                        data = goods[parseInt(testId)||0]||goods[0],
+                        reviewParams = {"1":data.review1,"2":data.review2,"3":data.review3,"_":new Date().getTime()},
+                        reviewFlag = '#comment('+JSON.stringify(reviewParams)+')';
+                    
+                    data.reviewUrl = data.cartUrl+reviewFlag;
+
+                    this.tpl = document.getElementById('J_itemTpl').innerHTML;
+
+                    this.render(data);
+                },
+                render:function(data){
+                    document.getElementById('J_item').innerHTML=utils.toHtml(this.tpl,data);
+                }
+            };
+            return pub;
+        })(Zepto);
+        
+    </script>
+</head>
+<body>
+    <article id='J_item' class="item">
+
+        <h1 class="title">4口USB充电器，出差必备</h1>
+        <div class="meta">
+            <div class="ilb desc">奥睿智科ipad电脑手机4口充电器</div>
+            <div class="ilb price"><i class="ico_price">&yen;</i>2888.00</div>
+        </div>
+        <div class="album">
+            <img src="http://img1.icson.com/product/pic200/19/062/19-062-10317.jpg" alt="4口USB充电器，出差必备" width="200" height="200" />
+        </div>
+        <div class="sns cfx">
+            <div class="ilb sns_col like"><a href="javascript:;"><i class="ico ico_like"></i><strong>117</strong></a></div>
+            <div class="ilb sns_split sns_split1"></div>
+            <div class="ilb sns_col review"><a href="{{reviewUrl}}"><i class="ico ico_review"></i><strong>2228</strong></a></div>
+            <div class="ilb sns_split sns_split2"></div>
+            <div class="ilb sns_col yixun"><a href="{{cartUrl}}"><i class="ico ico_yixun"></i></a></div>
+        </div>
+    </article>
+
+    <script id="J_itemTpl" type="text/hogan-tpl">
+        <h1 class="title">{{title}}</h1>
+        <div class="meta">
+            <div class="ilb desc">{{desc}}</div>
+            <div class="ilb price"><i class="ico_price">&yen;</i>{{price}}</div>
+        </div>
+        <div class="album">
+            <img src="{{pic}}" alt="{{title}}" width="200" height="200" />
+        </div>
+        <div class="sns cfx">
+            <div class="ilb sns_col like"><a href="javascript:;"><i class="ico ico_like"></i><strong>{{like}}</strong></a></div>
+            <div class="ilb sns_split sns_split1"></div>
+            <div class="ilb sns_col review"><a href="{{reviewUrl}}"><i class="ico ico_review"></i><strong>{{review}}</strong><a></div>
+            <div class="ilb sns_split sns_split2"></div>
+            <div class="ilb sns_col yixun"><a href="{{cartUrl}}"><i class="ico ico_yixun"></i></a></div>
+        </div>
+    </script>
+
+    <script>
+    view.init();
+    </script>
+    
+</body>
+</html>

@@ -4,11 +4,12 @@
     <meta charset="utf-8" />
     <title>易迅微信商详页</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <script src="http://42.120.1.172/touch/js/zepto.min.js"></script>
+    <script src="js/data.js"></script>
 
     <style>
         html,body{display: block;margin:0;padding:0;height:100%;overflow: hidden;}
@@ -39,41 +40,6 @@
             return pub;
 
         })(Zepto),
-        //测试数据
-        goods = [{
-            url:'http://m.yixun.com/event_static/oneprod_128.html?eventid=128',
-            cartUrl:'http://m.yixun.com/t/detail/?pid=1283095&channelId=0',
-            title:'ibody Rainbow 蓝牙健康追踪器 黑色',
-            desc:'外观专利独特睡眠监控 健康走出来',
-            price:239,
-            review:42,
-            review1:29,
-            review2:11,
-            review3:2,
-            pic:'http://img1.icson.com/product/pic200/21/058/21-058-88607.jpg'
-        },{
-            url:'http://m.51buy.com/event_static/oneprod_159.html?eventid=159',
-            cartUrl:'http://m.51buy.com/t/detail/?pid=682350&channelId=0',
-            title:'Boogie Board LCD 液晶绘画板 LCD drawing board 红色',
-            desc:'第二批现货已到 海外手写板易迅三包无忧售后',
-            price:399,
-            review:34,
-            review1:29,
-            review2:4,
-            review3:1,
-            pic:'http://img2.icson.com/product/pic200/19/025/19-025-10156.jpg'
-        },{
-            url:'http://m.51buy.com/event_static/oneprod_109.html?eventid=109',
-            cartUrl:'http://m.51buy.com/t/detail/?pid=1259340&channelId=',
-            title:'麦步V2 卡路里消耗3D电子蓝牙微信计步器 绿色',
-            desc:'轻松计楼层计步数计卡路里，还有7天排行、好友PK等多种新玩法，等你来发现',
-            price:179,
-            review:191,
-            review1:165,
-            review2:9,
-            review3:17,
-            pic:'http://img2.icson.com/product/pic200/21/057/21-057-10094.jpg'
-        }],
         jumper = (function($){
             var pub = {
                 init:function(){
@@ -81,7 +47,7 @@
                         landing = utils.getUrlParam('landing'),
                         data = goods[parseInt(testId)||0]||goods[0];
                     if(landing==='1'){
-                        this.go('http://oxox.io/demos/wx/yxlanding/index.html?'+$.param(data));
+                        this.go('http://oxox.io/demos/wx/yxlanding/index.html?id='+testId);
                         return;
                     }
                     this.load(data.url);
@@ -95,10 +61,10 @@
             };
             return pub;
         })(Zepto);
-        jumper.init();
     </script>
 </head>
 <body>
     <iframe id="J_frame" src="about:blank" frameborder="0"></iframe>
+    <script>jumper.init();</script>
 </body>
 </html>
