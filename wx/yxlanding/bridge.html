@@ -12,7 +12,7 @@
     <script src="http://twitter.github.com/hogan.js/builds/2.0.0/hogan-2.0.0.js"></script>
     <script src="js/data.js"></script>
     <style>
-        *{margin:0;padding:0}
+        *{margin:0;padding:0;font-weight: normal;}
         body{line-height:1.4;font-size:14px;color:#333;-webkit-text-size-adjust:none;font-family:"ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3";-webkit-text-size-adjust:none;}
         fieldset,img{border:0}
         a{text-decoration:none;color:#444;}
@@ -24,25 +24,26 @@
         .ilb{display: inline-block;}
         html,body{display: block;height:100%;}
         iframe{border:0;width:100%;height:100%;}
-        .ico{display:inline-block;background:url(img/ico_2x.png) 0 0 no-repeat;background-size: 51px 48px;width:16px;height:16px;vertical-align: middle;}
+        .ico{display:inline-block;background:url(img/ico_2x.png) 0 0 no-repeat;background-size: 59px 81px;width:16px;height:16px;vertical-align: middle;}
         .ico_review{background-position: 0 -16px;}
         .ico_yixun{background-position: 0 -32px;width:51px;}
+        .ico_logo{position:absolute;left:15px;top:0;width:59px;height:30px;background-position: 0 -51px;}
         .ico_price{font-family: arial;}
-        .item{margin:0 auto;padding:60px 10px;text-align: center;}
-        .item .title{color:#666;font-size: 18px;height:18px;line-height: 18px;overflow: hidden;text-overflow:ellipsis;margin-bottom: 15px;}
-        .item .meta{margin-bottom: 30px;}
-        .item .album{text-align: center;margin-bottom: 30px;}
-        .item .desc,.item .price{color:#999999;font-size: 14px;height:14px;line-height: 14px;}
-        .item .desc{width:200px;overflow: hidden;text-overflow:ellipsis;}
+        .item{margin:0 auto;padding:55px 15px;text-align: center;position: relative;}
+        .item .promo{color:#666;font-size: 20px;line-height: normal;overflow: hidden;text-overflow:ellipsis;margin-bottom: 5px;}
+        .item .meta{margin-bottom: 15px;height: 14px;}
+        .item .album{text-align: center;margin-bottom: 15px;}
+        .item .title,.item .price{color:#999999;font-size: 12px;height:14px;line-height: 14px;}
+        .item .title{width:200px;overflow: hidden;text-overflow:ellipsis;}
         .item .price{margin-left:15px;width:70px;overflow: hidden;text-overflow:ellipsis;}
-        .item .sns{height:18px;line-height: 18px;font-size: 18px;}
+        .item .sns{height:18px;line-height: 18px;font-size: 16px;}
             .sns .ico{margin-right: 5px;margin-top:-2px;}
         .item .like{position: relative;}
         .item .like a,.item .ico_plus{position:relative;z-index:2;color:#ff7e7e;}
         .item .ico_plus{position: absolute;z-index:1;right:0;width:24px;height:24px;line-height: 24px;text-align: center;-webkit-transition:all .35s ease;opacity: 0;top:0;}
         .item .ico_plus_on{top:-24px;opacity: 1;}
         .item .review a{color:#8ed2bd;}
-        .item .sns_split{width:0;height:18px;border-right:3px solid #f2f2f2;margin:-2px 10px 0;vertical-align: middle;}
+        .item .sns_split{width:0;height:18px;border-right:2px solid #f2f2f2;margin:-2px 15px 0;vertical-align: middle;}
     </style>
     
     <script>
@@ -131,11 +132,11 @@
 </head>
 <body>
     <article id='J_item' class="item">
-
-        <h1 class="title">4口USB充电器，出差必备</h1>
+        <i class="ico ico_logo"></i>
+        <div class="promo">是手环，更是奢华</div>
         <div class="meta">
-            <div class="ilb desc">奥睿智科ipad电脑手机4口充电器</div>
-            <div class="ilb price"><i class="ico_price">&yen;</i>2888.00</div>
+            <h1 class="ilb title">美国进口 MISFIT SHINE 智能手环</h1>
+            <div class="ilb price"><i class="ico_price">&yen;</i>889.00</div>
         </div>
         <div class="album">
             <img src="http://img1.icson.com/product/pic200/19/062/19-062-10317.jpg" alt="4口USB充电器，出差必备" width="200" height="200" />
@@ -153,9 +154,10 @@
     </article>
 
     <script id="J_itemTpl" type="text/hogan-tpl">
-        <h1 class="title">{{title}}</h1>
+        <i class="ico ico_logo"></i>
+        <div class="promo">{{promo}}</div>
         <div class="meta">
-            <div class="ilb desc">{{desc}}</div>
+            <h1 class="ilb title">{{title}}</h1>
             <div class="ilb price"><i class="ico_price">&yen;</i>{{price}}</div>
         </div>
         <div class="album">
@@ -167,7 +169,9 @@
                 <i id="J_icoPlus" class="ico_plus">+1</i>
             </div>
             <div class="ilb sns_split sns_split1"></div>
-            <div class="ilb sns_col review"><a href="{{reviewUrl}}"><i class="ico ico_review"></i><strong>{{review}}</strong><a></div>
+            <div class="ilb sns_col review">
+                <a href="{{reviewUrl}}"><i class="ico ico_review"></i><strong>{{review}}</strong></a>
+            </div>
             <div class="ilb sns_split sns_split2"></div>
             <div class="ilb sns_col yixun"><a href="{{cartUrl}}"><i class="ico ico_yixun"></i></a></div>
         </div>
