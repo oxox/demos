@@ -1,6 +1,7 @@
 var goods = [{
       url:'http://m.yixun.com/t/detail/index.html?pid=1283095&wxsg=1',
       cartUrl:'http://m.yixun.com/t/detail/index.html?pid=1283095&wxsg=1',
+      commentUrl:'http://m.yixun.com/t/detail/index_comment.html?pid=1283095&wxsg=1&simple=1',
       title:'IBody Rainbow 蓝牙健康追踪器 黑色',
       promo:'酷炫设计只为你的健康',
       price:229,
@@ -14,6 +15,7 @@ var goods = [{
   },{
       url:'http://m.yixun.com/t/detail/index.html?pid=682349&wxsg=1',
       cartUrl:'http://m.yixun.com/t/detail/index.html?pid=682349&wxsg=1',
+      commentUrl:'http://m.yixun.com/t/detail/index_comment.html?pid=682349&wxsg=1&simple=1',
       title:'Boogie Board 液晶手写板 黑色',
       promo:'海外直购，前沿科技',
       price:299,
@@ -27,6 +29,7 @@ var goods = [{
   },{
       url:'http://m.yixun.com/t/detail/index.html?pid=1299565&wxsg=1',
       cartUrl:'http://m.yixun.com/t/detail/index.html?pid=1299565&wxsg=1',
+      commentUrl:'http://m.yixun.com/t/detail/index_comment.html?pid=1299565&wxsg=1&simple=1',
       title:'美国进口 MISFIT SHINE 智能手环',
       promo:'是手环，更是奢华',
       price:889,

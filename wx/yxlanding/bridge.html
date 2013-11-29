@@ -75,11 +75,7 @@
             var pub = {
                 init:function(){
                     var testId = utils.getUrlParam('id'),
-                        data = goods[parseInt(testId)||0]||goods[0],
-                        reviewParams = {"1":data.review1,"2":data.review2,"3":data.review3,"_":new Date().getTime()},
-                        reviewFlag = '#comment('+JSON.stringify(reviewParams)+')';
-                    
-                    data.reviewUrl = data.cartUrl+reviewFlag;
+                        data = goods[parseInt(testId)||0]||goods[0];
 
                     this.tpl = document.getElementById('J_itemTpl').innerHTML;
 
@@ -149,7 +145,7 @@
                 <i id="J_icoPlus" class="ico_plus">+1</i>
             </div>
             <div class="ilb sns_split sns_split1"></div>
-            <div class="ilb sns_col review"><a href="{{reviewUrl}}"><i class="ico ico_review"></i><strong>2228</strong></a></div>
+            <div class="ilb sns_col review"><a href="{{commentUrl}}"><i class="ico ico_review"></i><strong>2228</strong></a></div>
             <div class="ilb sns_split sns_split2"></div>
             <div class="ilb sns_col yixun"><a href="{{cartUrl}}"><i class="ico ico_yixun"></i></a></div>
         </div>
@@ -172,7 +168,7 @@
             </div>
             <div class="ilb sns_split sns_split1"></div>
             <div class="ilb sns_col review">
-                <a href="{{reviewUrl}}"><i class="ico ico_review"></i><strong>{{review}}</strong></a>
+                <a href="{{commentUrl}}"><i class="ico ico_review"></i><strong>{{review}}</strong></a>
             </div>
             <div class="ilb sns_split sns_split2"></div>
             <div class="ilb sns_col yixun"><a href="{{cartUrl}}"><i class="ico ico_yixun"></i></a></div>
