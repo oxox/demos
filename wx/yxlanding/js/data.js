@@ -2,7 +2,7 @@ var goods = [{
       url:'http://m.yixun.com/t/detail/index.html?pid=1283095&wxsg=1',
       cartUrl:'http://m.yixun.com/t/detail/index.html?pid=1283095&wxsg=1',
       commentUrl:'http://m.yixun.com/t/detail/index_comment.html?pid=1283095&wxsg=1&simple=1',
-      title:'IBody Rainbow 蓝牙健康追踪器 黑色',
+      title:'Ibody Rainbow 蓝牙健康追踪器 黑色',
       promo:'酷炫设计只为你的健康',
       price:229,
       like:50,
