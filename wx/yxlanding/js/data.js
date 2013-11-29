@@ -32,7 +32,7 @@ var goods = [{
       commentUrl:'http://m.yixun.com/t/detail/index_comment.html?pid=1299565&wxsg=1&simple=1',
       title:'美国进口 MISFIT SHINE 智能手环',
       promo:'是手环，更是奢华',
-      price:889,
+      price:899,
       like:245,
       review:0,
       review1:0,
