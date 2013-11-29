@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>易迅微信分享跳转页</title>
+    <title>易迅网</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
     <meta name="format-detection" content="telephone=no" />
@@ -82,6 +82,8 @@
                     data.reviewUrl = data.cartUrl+reviewFlag;
 
                     this.tpl = document.getElementById('J_itemTpl').innerHTML;
+
+                    document.title = data.title;
 
                     this.render(data);
 
