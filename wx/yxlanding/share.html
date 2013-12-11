@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="css/share.full.css"/>
 </head>
-<body class="sitem_fit">
+<body>
     <article id='J_item' class="sitem">
         <i class="sico sico_logo"></i>
         <div class="sitem_inner">
@@ -231,6 +231,7 @@
                         //评论效果演示
                         //view.fadeInComment();
                     });
+
                 },
                 bindTransition:function(){
                     this.$icoPlus.onTransitioned(function(){
@@ -268,6 +269,29 @@
                 }
             };
             return pub;
+        })(Zepto),
+        autoVAlignMiddle = (function($){
+            var pub = {
+                $item:$('#J_item'),
+                $win:$(window),
+                init:function(minHeight){
+                    this.$win.bind('orientationchange', function () {
+                        autoVAlignMiddle.onResize(minHeight);
+                    }).bind('resize',function(){
+                        autoVAlignMiddle.onResize(minHeight);
+                    });
+                    this.onResize(minHeight);
+                },
+                onResize:function(minHeight){
+                    var winHeight = this.$win.height();
+                    if(minHeight>winHeight){
+                        this.$item.css('height','auto');
+                    }else{
+                        this.$item.css('height',winHeight+'px');
+                    }
+                }
+            };
+            return pub;
         })(Zepto);
 
         ;(function($){
@@ -288,6 +312,8 @@
 
     <script>
     view.init();
+    //首页居中：旋屏，resize，动态设置sitem高度
+    autoVAlignMiddle.init(380);
     </script>
     
 </body>
