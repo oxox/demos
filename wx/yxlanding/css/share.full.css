@@ -1,0 +1,108 @@
+/*======S-iSynAutoImport[E:\ecdsvn\51buy\trunk\css\wx\common\mod_reset.css]=====*/
+/*===== reset =====*/
+	*{margin:0; padding:0;vertical-align: baseline}
+	fieldset,img{border:0 none;}
+	i,em{font-style: normal;}
+	ol,ul{list-style: none;}
+	input,img{vertical-align:middle}
+	input,select{font: inherit;font-size: 100%;}
+	table{border-collapse: collapse;border-spacing: 0;}
+	a{text-decoration:none; color:#333;}
+	html,body{height: 100%;}
+	body{margin:0 auto;min-width:320px;max-width:1024px;font-size:14px;line-height: 1;color:#444;-webkit-text-size-adjust:100%;background: #d9d9d9;font-family:"\5fae\8f6f\96c5\9ed1","Microsoft YaHei", Helvetica,Arial, Verdana, sans-serif;}
+
+/*===== 快捷样式类名 =====*/
+	.hide{display:none;}
+	/*===== 清除浮动 =====*/
+	.clearfix{zoom:1;}
+	.clearfix:after{content:' ';display:block;clear:both;height:0;visibility:hidden;}
+	/*===== 文本色 =====*/
+		.c_tx0{color:#4F89DA;}/* 蓝色 */
+		.c_tx1{color:#C73D00;}/* 红色 */
+		.c_tx2{color:#666666;}/* 灰色 */
+		.c_tx3{color:#999999;}/* 弱化文本色 */
+/*======E-iSynAutoImport[E:\ecdsvn\51buy\trunk\css\wx\common\mod_reset.css]=====*/
+
+body{font-family:"ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3";-webkit-text-size-adjust:none;}
+.sfl{float:left;display: inline;}
+.sfr{float:right;display: inline;}
+.silb{display: inline-block;}
+.sico{display:inline-block;background:url(../img/share_icon.png) 0 0 no-repeat;background-size: 59px 81px;width:16px;height:16px;vertical-align: middle;}
+.sico_review{background-position: 0 -16px;}
+.sico_yixun{background-position: 0 -32px;width:51px;}
+.sico_logo{position:absolute;left:15px;top:0;width:59px;height:30px;background-position: 0 -51px;}
+.sico_price{font-family: arial;}
+.sico_edit{background-position: -16px 0;}
+.sico_like1{background-position: -16px -16px;}
+.sitem{margin:0 auto;text-align: center;background-color: #fff;}
+.sitem_inner{padding:55px 15px;position: relative;}
+.sitem .promo{color:#666;font-size: 20px;line-height: normal;overflow: hidden;text-overflow:ellipsis;margin-bottom: 5px;}
+.sitem .meta{margin-bottom: 15px;height: 14px;}
+.sitem .album{text-align: center;margin-bottom: 15px;}
+.sitem .title,.sitem .price{color:#999999;font-size: 12px;height:14px;line-height: 14px;display: inline-block;vertical-align: middle;}
+.sitem .title{max-width:210px;overflow: hidden;text-overflow:ellipsis;}
+.sitem .price{margin-left:10px;margin-top:2px;max-width:65px;overflow: hidden;text-overflow:ellipsis;line-height: 12px;/* ￥角符号高度为15px*/}
+.sitem .sns{height:18px;line-height: 18px;font-size: 16px;}
+    .sns .sico{margin-right: 5px;margin-top:-3px;}
+.sitem .like_num,.sitem .review_num{font-weight: normal;}
+.sitem .like{position: relative;}
+.sitem .like a,.sitem .sico_plus{position:relative;z-index:2;color:#ff7e7e;}
+.sitem .sico_plus{position: absolute;z-index:1;right:0;width:24px;height:24px;line-height: 24px;text-align: center;-webkit-transition:all .35s ease;opacity: 0;top:0;}
+.sitem .sico_plus_on{top:-24px;opacity: 1;}
+.sitem .review a{color:#8ed2bd;}
+.sitem .sns_split{width:0;height:18px;border-right:2px solid #f2f2f2;margin:-2px 15px 0;vertical-align: middle;}
+/* 评论 */
+.scomments{background-color: #f6f6f6;padding-bottom: 50px;}
+.scomment{padding:15px 10px; border-top:2px solid #ddd;display:-webkit-box;display:box;-webkit-transition:all .35s ease;opacity: 1;}
+.scomment_hide{opacity: 0;}
+.scomment_bd{-webkit-box-flex: 1; box-flex: 1;}
+.scomment_avatar{-webkit-box-flex: 0; box-flex: 0;margin-right:18px;width:46px;}
+.scomment_avatar img{vertical-align:top;-webkit-border-radius: 5px;border-radius: 5px;}
+.scomment_txt{line-height: 18px;max-height: 36px;overflow:hidden;text-overflow:ellipsis;}
+.scomment_user,.scomment_date{font-size:12px;}
+.scomment_user{font-weight: bold;color:#4f8ad9;margin-bottom: 10px}
+.scomment_action{border-top:2px solid #ddd;}
+.sbtn_more{display: block;height:60px;line-height: 60px;text-align: center;color:#999;}
+.scomment_form{padding:0 10px;}
+.scomment_form_bd{padding:5px 0;position:relative;border:1px solid #ddd;background-color: #fff;}
+.scomment_form_c1{position: absolute;top:10px;left:10px;width:16px;}
+.scomment_form_c2{margin-left:30px;margin-right: 5px;}
+.scomment_ipt{width:100%;line-height: 16px;border:none;padding:5px 0;font-size: 16px;}
+.scomment_ipt:focus {/*outline: 0;*/}
+.scomment_form_active .scomment_form_c1{display: none;}
+.scomment_form_active .scomment_form_c2{margin-left:5px;}
+
+/* 首屏居中显示sitem 
+=================================================================*/
+/*
+js动态判断屏幕高度，
+如果高度小于主商品区的高度，则依然使用目前的布局方式，不作任何处理。
+如果高度大于主商品区的高度，给body添加一个类名sitem_fit，同时动态设置sitem高度
+*/
+.sitem_fit .sitem{
+    position: relative;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    min-height: 370px;
+}
+.sitem_fit .sitem_inner{
+    position: absolute;
+    left:15px;
+    right:15px;
+    top:50%;
+    margin-top:-163px;
+    padding:30px 0 0 0;
+    height:297px;
+}
+
+/* http://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone */
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+    select:focus, textarea:focus, input:focus {
+        font-size: 16px;
+    }
+}
+/*=====  loading  =====*/
+.mod_loading{position: fixed;left: 50%;top: 50%;z-index:100;width: 110px;height: 66px;margin-left: -55px;margin-top: -33px;z-index: 100;text-align: center;}
+.mod_loading_gif{width: 41px;height: 41px;border-radius: 8px;box-shadow: 0 1px 2px #8B8B8B;margin: 0 auto 5px;background:#fff no-repeat center center;background-size: 17px 31px;background-image: url(data:image/gif;base64,R0lGODlhIQA+APfKAP9/AjF85P/48f+BBf/9/P/v3/+GEP+PIv39//T4/jN+5P+cPP+/gf/ixv+sW+Xv/DyD5f+tXP/Spv+aOEuM5/+FDfH2/Xqq7tHi+TeA5Zi+8nur7v/ixf/RpWCa6jqC5f/27vn7/v+0av/hw0yN6F2Y6v/+/f+OH/+4c/+PIf+ABIOw77bR9fv8/v/t3LnS9vf6/v/BhP/8+f+/gJi98fr8/v/69f/8+kqM5//TqePt+zN95Ju/8v+QJP3+/4238M/g+UiL57PP9XKm7a3L9FiV6f/HkdXk+f/cu3+t7oay7//9+//y5f/NnWqg7Hip7f/t27DN9TiB5f+cO//fwL7V9vD1/f+6d8nd+Pb5/n6t7kCG5v+CCMTZ9//nz/+gQ/+ULP+mT9fm+kCF5sXa94Kv7/+yZ//TqP+TKUSI5/+2b//Ztf+JFsPZ926j7P/lzP/q1VqW6Yiz79Dh+f/o0f/x5EKH5v+dPefw/P+tXf+KGP+EDLXQ9cbb+P/ev//Dif+nUf+8etTk+f/38P+SJ//Qo7TP9ZO68f/kyk+P6HKl7PP3/f/w4f/cuunx/DmB5Z/C8mGa6sre+Nrn+kOH5v+KF/+ZNVGQ6MLY9/+LGkGG5rjS9t3p+9bl+oq18P/atv/79/+1bf+lTJC58P/mzv/buFOS6Mzf+P/WrzZ/5f/59P+jSP/17OLt+/+vYNjm+v+IFP+yZv/at/+rWf/7+Gae61+Z6q/M9XCk7P/Onv/dvf+EC/+xZf+JFf+vYf/ly//Qoury/Pz9/8fc+P+oUv+XMv+DCf/MmqXG8/+DCv///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUDw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpDNTRERjY3MzdCNzhFMTExOTcwNEQ5MDVDQjFDMDVFNSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2QjA3QTkyOURBNDMxMUUyQTc5RUIzMjUxNEQ0RjY2QyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2QjA3QTkyOERBNDMxMUUyQTc5RUIzMjUxNEQ0RjY2QyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IFdpbmRvd3MiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo1RDc5NkI3NkIxNzhFMTExOTcwNEQ5MDVDQjFDMDVFNSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDNTRERjY3MzdCNzhFMTExOTcwNEQ5MDVDQjFDMDVFNSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1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);}
