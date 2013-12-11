@@ -67,8 +67,7 @@ body{font-family:"ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Hiragi
 .scomment_form_bd{padding:5px 0;position:relative;border:1px solid #ddd;background-color: #fff;}
 .scomment_form_c1{position: absolute;top:10px;left:10px;width:16px;}
 .scomment_form_c2{margin-left:30px;margin-right: 5px;}
-.scomment_ipt{width:100%;line-height: 16px;border:none;padding:5px 0;font-size: 16px;}
-.scomment_ipt:focus {/*outline: 0;*/}
+.scomment_ipt{display:block;width:100%;line-height: 16px;border:none;padding:5px 0;font-size: 16px;-webkit-appearance:none;box-shadow: none;}
 .scomment_form_active .scomment_form_c1{display: none;}
 .scomment_form_active .scomment_form_c2{margin-left:5px;}
 
@@ -83,7 +82,7 @@ body{font-family:"ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Hiragi
     left:15px;
     right:15px;
     top:50%;
-    -webkit-transform:translateY(-50%);
+    margin-top:-163px;
     padding:30px 0 0 0;
     height:297px;
 }

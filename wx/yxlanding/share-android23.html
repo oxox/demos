@@ -233,27 +233,6 @@
                         //评论效果演示
                         view.fadeInComment();
                     });
-
-                    //首页居中：旋屏，resize，动态设置sitem高度
-                    
-                    var fitHeight = parseInt(document.body.getAttribute('data-fitheight'));
-                    $(window).bind('orientationchange', function () {
-                        view.onResize(fitHeight);
-                    }).bind('resize',function(){
-                        view.onResize(fitHeight);
-                    });
-                    this.onResize(fitHeight);
-                    
-                },
-                onResize:function(fitHeight){
-                    var winHeight = $(window).height();
-                    if(fitHeight>winHeight){
-                        $('body').removeClass('sitem_fit');
-                        $('#J_item').css('height','auto');
-                    }else{
-                        $('body').addClass('sitem_fit');
-                        $('#J_item').css('height',winHeight+'px');
-                    }
                 },
                 bindTransition:function(){
                     this.$icoPlus.onTransitioned(function(){
