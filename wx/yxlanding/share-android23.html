@@ -1,0 +1,321 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>易迅网</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+    <link rel="stylesheet" href="css/share.full.css"/>
+</head>
+<body class="sitem_fit" data-fitheight="370">
+    <div style="position:absolute;top:0;height:0;">
+    <!--
+    js动态判断屏幕高度，
+    如果高度大于主商品区的高度(data-fitheight)，则给body添加一个类名sitem_fit）
+    -->
+    <article id='J_item' class="sitem">
+        <i class="sico sico_logo"></i>
+        <div class="sitem_inner">
+            <div class="promo">酷炫设计只为你的健康</div>
+            <div class="meta">
+                <h1 class="silb title">Ibody Rainbow 蓝牙健康追踪器 黑色</h1>
+                <div class="silb price"><i class="sico_price">&yen;</i>229.00</div>
+            </div>
+            <div class="album">
+                <a href="#">
+                    <img src="img/1.jpg" alt="Ibody Rainbow 蓝牙健康追踪器 黑色" width="200" height="200" />
+                </a>
+            </div>
+            <div class="sns">
+                <div class="silb sns_col like">
+                    <!--点赞后加类名sico_like1-->
+                    <a id="J_btnLike" href="javascript:;"><i class="sico sico_like"></i><strong id="J_likeNum" class="like_num">117</strong></a>
+                    <i id="J_icoPlus" class="sico_plus">+1</i>
+                </div>
+                <div class="silb sns_split sns_split1"></div>
+                <div class="silb sns_col review"><a href="{{commentUrl}}"><i class="sico sico_review"></i><strong class="review_num">2228</strong></a></div>
+                <div class="silb sns_split sns_split2"></div>
+                <div class="silb sns_col yixun"><a href="{{cartUrl}}"><i class="sico sico_yixun"></i></a></div>
+            </div>
+        </div>
+    </article>
+    <article class="scomments">
+        <ul class="scomment_list">
+            <li class="scomment clearfix">
+                <div class="scomment_avatar">
+                    <img src="http://ecd.oa.com/92" alt="user name" width="46" height="46"/>
+                </div>
+                <div class="scomment_bd">
+                    <div class="sfr c_tx3 scomment_date">2013-10-30</div>
+                    <div class="scomment_user">nicoco</div>
+                    <div class="c_tx2 scomment_txt">买了以后竟然能坚持跑步了,不错，绿色 的比较好看哦！买了以后竟然能坚持跑步了,不错，绿色 的比较好看哦！买了以后竟然能坚持跑步了,不错，绿色 的比较好看哦！</div>
+                </div>
+            </li>
+            <li class="scomment clearfix">
+                <div class="scomment_avatar">
+                    <img src="http://ecd.oa.com/92" alt="user name" width="46" height="46"/>
+                </div>
+                <div class="scomment_bd">
+                    <div class="sfr c_tx3 scomment_date">2013-10-30</div>
+                    <div class="scomment_user">nicoco</div>
+                    <div class="c_tx2 scomment_txt">买了以后竟然能坚持跑步了,不错，绿色 的比较好看哦！买了以后竟然能坚持跑步了,不错，绿色 的比较好看哦！买了以后竟然能坚持跑步了,不错，绿色 的比较好看哦！</div>
+                </div>
+            </li>
+            <li class="scomment clearfix">
+                <!--
+                <div class="scomment_avatar">
+                    <img src="http://ecd.oa.com/92" alt="user name" width="46" height="46"/>
+                </div>
+                -->
+                <div class="scomment_bd">
+                    <div class="sfr c_tx3 scomment_date">2013-10-30</div>
+                    <div class="scomment_user">nicoco</div>
+                    <div class="c_tx2 scomment_txt">买了以后竟然能坚持跑步了,不错，绿色 的比较好看哦！买了以后竟然能坚持跑步了,不错，绿色 的比较好看哦！买了以后竟然能坚持跑步了,不错，绿色 的比较好看哦！</div>
+                </div>
+            </li>
+        </ul>
+        <div class="scomment_action">
+            <a class="sbtn_more" href="#" target="_blank">点击查看更多</a>
+        </div>
+        <div id="J_scommentForm" class="scomment_form"><!--加类名scomment_form_active进入编辑状态，隐藏编辑图标-->
+            <div class="scomment_form_bd">
+                <div class="scomment_form_c1">
+                    <i class="sico sico_edit"></i>
+                </div>
+                <div class="scomment_form_c2">
+                    <textarea id="J_scommentIpt" class="c_tx3 scomment_ipt" placeholder="说点什么吧"></textarea>
+                </div>
+            </div>
+        </div>
+    </article>
+    </div>
+
+    <script id="J_itemTpl" type="text/hogan-tpl">
+        <i class="sico sico_logo"></i>
+        <div class="sitem_inner">
+            <div class="promo">{{promo}}</div>
+            <div class="meta">
+                <h1 class="silb title">{{title}}</h1>
+                <div class="silb price"><i class="sico_price">&yen;</i>{{price}}</div>
+            </div>
+            <div class="album">
+                <a href="{{cartUrl}}"><img src="{{pic}}" alt="{{title}}" width="200" height="200" /></a>
+            </div>
+            <div class="sns cfx">
+                <div class="silb sns_col like">
+                    <a id="J_btnLike" href="javascript:;"><i class="sico sico_like"></i><strong id="J_likeNum" class="like_num">{{like}}</strong></a>
+                    <i id="J_icoPlus" class="sico_plus">+1</i>
+                </div>
+                <div class="silb sns_split sns_split1"></div>
+                <div class="silb sns_col review">
+                    <a href="{{commentUrl}}"><i class="sico sico_review"></i><strong class="review_num">{{review}}</strong></a>
+                </div>
+                <div class="silb sns_split sns_split2"></div>
+                <div class="silb sns_col yixun"><a href="{{cartUrl}}"><i class="sico sico_yixun"></i></a></div>
+            </div>
+        </div>
+    </script>
+    <script id="J_commentTpl" type="text/hogan-tpl">
+        <li class="scomment scomment_hide clearfix">
+            <div class="scomment_avatar">
+                <img src="{{avatar}}" alt="{{user}}" width="46" height="46"/>
+            </div>
+            <div class="scomment_bd">
+                <div class="sfr c_tx3 scomment_date">{{date}}</div>
+                <div class="scomment_user">{{user}}</div>
+                <div class="c_tx2 scomment_txt">{{txt}}</div>
+            </div>
+        </li>
+    </script>
+
+    <div class="mod_loading" style="display:none;">
+        <div class="mod_loading_gif"></div>
+        <p>努力加载中...</p>
+    </div>
+
+    <!--演示脚本,请删除-->
+    <script src="http://zeptojs.com/zepto.min.js"></script>
+    <script src="http://twitter.github.com/hogan.js/builds/2.0.0/hogan-2.0.0.js"></script>
+    <script>
+    var goods = [{
+          url:'http://m.yixun.com/t/detail/index.html?pid=1283095&wxsg=1',
+          cartUrl:'http://m.yixun.com/t/detail/index.html?pid=1283095&wxsg=1',
+          commentUrl:'http://m.yixun.com/t/detail/index_comment.html?pid=1283095&wxsg=1&simple=1',
+          title:'Ibody Rainbow 蓝牙健康追踪器 黑色',
+          promo:'酷炫设计只为你的健康',
+          price:229,
+          like:50,
+          review:45,
+          review1:30,
+          review2:6,
+          review3:9,
+          pic:'img/1.jpg',
+          qrcode:'img/1.png'
+      },{
+          url:'http://m.yixun.com/t/detail/index.html?pid=682349&wxsg=1',
+          cartUrl:'http://m.yixun.com/t/detail/index.html?pid=682349&wxsg=1',
+          commentUrl:'http://m.yixun.com/t/detail/index_comment.html?pid=682349&wxsg=1&simple=1',
+          title:'Boogie Board 液晶手写板 黑色',
+          promo:'海外直购，前沿科技',
+          price:299,
+          like:32,
+          review:21,
+          review1:15,
+          review2:1,
+          review3:5,
+          pic:'img/2.jpg',
+          qrcode:'img/2.png'
+      },{
+          url:'http://m.yixun.com/t/detail/index.html?pid=1299565&wxsg=1',
+          cartUrl:'http://m.yixun.com/t/detail/index.html?pid=1299565&wxsg=1',
+          commentUrl:'http://m.yixun.com/t/detail/index_comment.html?pid=1299565&wxsg=1&simple=1',
+          title:'美国进口 MISFIT SHINE 智能手环',
+          promo:'是手环，更是奢华',
+          price:899,
+          like:245,
+          review:0,
+          review1:0,
+          review2:0,
+          review3:0,
+          pic:'img/3.jpg',
+          qrcode:'img/3.png'
+      }];
+    </script>
+    <script>
+
+        var utils = (function($){
+            var pub = {};
+            pub.getUrlParam = function (name) {
+                var paramStr = location.search;
+                if (paramStr.length == 0) return null;
+                if (paramStr.charAt(0) != '?') return null;
+                paramStr = unescape(paramStr);
+                paramStr = paramStr.substring(1);
+                if (paramStr.length == 0) return null;
+                var params = paramStr.split('&');
+                for (var i = 0; i < params.length; i++) {
+                        var parts = params[i].split('=', 2);
+                        if (parts[0] == name) {
+                                if (parts.length < 2 || typeof (parts[1]) == "undefined" || parts[1] == "undefined" || parts[1] == "null") return "";
+                                return parts[1];
+                        }
+                }
+                return null;
+            };
+            pub.toHtml = function(tpl,obj,ext){tpl = Hogan.compile(tpl);return (tpl.render(obj,ext));};
+            return pub;
+
+        })(Zepto),
+        view = (function($){
+            var pub = {
+                init:function(){
+                    var testId = utils.getUrlParam('id'),
+                        data = goods[parseInt(testId)||0]||goods[0];
+
+                    this.tpl = document.getElementById('J_itemTpl').innerHTML;
+
+                    document.title = data.title;
+
+                    this.render(data);
+
+                    $('#J_btnLike').on('click',function(e){
+                        view.showBubble();
+                        return false;
+                    });
+                    this.likeNum = parseInt(document.getElementById('J_likeNum').innerHTML)||0;
+                    this.$icoPlus = $('#J_icoPlus');
+
+                    var $form = $('#J_scommentForm');
+                    $('#J_scommentIpt').on('focus',function(e){
+                        $form.addClass('scomment_form_active');
+                    }).on('blur',function(e){
+                        $form.removeClass('scomment_form_active');
+                        //评论效果演示
+                        view.fadeInComment();
+                    });
+
+                    //首页居中：旋屏，resize，动态设置sitem高度
+                    
+                    var fitHeight = parseInt(document.body.getAttribute('data-fitheight'));
+                    $(window).bind('orientationchange', function () {
+                        view.onResize(fitHeight);
+                    }).bind('resize',function(){
+                        view.onResize(fitHeight);
+                    });
+                    this.onResize(fitHeight);
+                    
+                },
+                onResize:function(fitHeight){
+                    var winHeight = $(window).height();
+                    if(fitHeight>winHeight){
+                        $('body').removeClass('sitem_fit');
+                        $('#J_item').css('height','auto');
+                    }else{
+                        $('body').addClass('sitem_fit');
+                        $('#J_item').css('height',winHeight+'px');
+                    }
+                },
+                bindTransition:function(){
+                    this.$icoPlus.onTransitioned(function(){
+                        view.hideBubble();
+                    });
+                },
+                showBubble:function(){
+                    this.bindTransition();
+                    this.$icoPlus.addClass('sico_plus_on');
+                    this.likeNum++;
+                    document.getElementById('J_likeNum').innerHTML = this.likeNum;
+                },
+                hideBubble:function(){
+                    this.$icoPlus.onTransitioned(false).removeClass('sico_plus_on');
+                },
+                render:function(data){
+                    document.getElementById('J_item').innerHTML=utils.toHtml(this.tpl,data);
+                },
+                //评论显示的效果
+                fadeInComment:function(){
+                    var commentHtml = document.getElementById('J_commentTpl').innerHTML,
+                        commentData = {
+                            user:'levinhuang',
+                            avatar:'http://ecd.oa.com/92',
+                            date:new Date().toJSON().substr(0,10),
+                            txt:'买了以后竟然能坚持跑步了,不错，绿色 的比较好看哦！买了以后竟然能坚持跑步了,不错，绿色 的比较好看哦！买了以后竟然能坚持跑步了,不错，绿色 的比较好看哦！'
+                        };
+                    commentHtml = $(utils.toHtml(commentHtml,commentData));
+
+                    $('.scomment_list').prepend(commentHtml);
+                    setTimeout(function(){
+                        commentHtml.removeClass('scomment_hide');
+                    },0);
+
+                }
+            };
+            return pub;
+        })(Zepto);
+
+        ;(function($){
+            $.extend($.fn, {
+                onTransitioned: function(cbk){
+                    return this.each(function () {
+                        if (cbk===false) {
+                            $(this).unbind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd");
+                            return;
+                        }
+                        $(this).bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", cbk);
+                    });
+                }//onTransitioned
+            });
+        })(Zepto);
+        
+    </script>
+
+    <script>
+    view.init();
+    </script>
+    
+</body>
+</html>
