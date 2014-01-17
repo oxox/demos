@@ -1,0 +1,341 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />css3 editor online
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<title>样式性能测试大全</title>
+	<style>
+	*{margin: 0; padding: 0;}
+	.clearfix:after {content:"."; display:block; height:0; visibility:hidden; clear:both; }
+	.clearfix { *zoom:1; }
+	a{text-decoration: none; color: #333;}
+	li{list-style: none;}
+	.nav{ list-style: none; border: 1px solid #333;}
+	.nav li{float: left;}
+	.nav li a{display: inline-block; padding: 10px 20px; font-weight: 800;}
+	.aside{border: 1px solid #333;margin-top: 100px;}
+	.aside_editor{float: left; border-right: 1px solid #333; padding: 0 10px;}
+	.property-content{float: right; }
+	.curr{
+		float: left;
+		width: 100px;
+		height: 100px;
+		border: 1px solid #333;
+		margin: 5px 5px 0 0;
+		text-align: center;
+		line-height: 100px;
+	}
+	.property-content{
+		padding: 10px 20px;
+	}
+	label{vertical-align: top;}
+	.content{margin: 0 auto; width: 90%}
+	.a_i{margin: 20px 0;}
+	.reset{ padding: 10px 20px; }
+	input[type="range"]{
+		width: 50px;
+	}
+	</style>
+</head>
+<body>
+	<ul class="nav clearfix">
+		<li><a class="active" href="javascript">首页</a></li>
+	</ul>
+	<div class="aside clearfix" >
+		<div class="aside_editor">
+			<h2>编辑</h2>
+			<div class="a_i">
+				<input id="reset" class="reset" type="button" value="reset" />
+				
+			</div>
+			<div class="a_i">
+				<select style="width:80px;" name="" id="property">
+					<option value="" selected >选择属性</option>
+					<option value="box-shadow">box-shadow</option>
+					<option value="border-radius">border-radius</option>
+					<option value="text-shadow">text-shadow</option>
+					<option value="background-image">background-image</option>	
+					<option value="opacity">opacity</option>
+					<option value="transform">transform</option>
+					<option value="borderImage">borderImage</option>
+				</select>
+			</div>
+			<div class="a_i">
+				<input style="width:40px;" id="add_num" type="number" value="0" max="100" min="0">
+				<input type="button" id="add" value="添加个数" />
+			</div>
+		</div>
+		<ul id="c_property" class="property-content">
+		</ul>
+	</div>
+	<div id="content" class="content clearfix">
+		
+	</div>
+	<script>
+		(function(){
+			window.DomBuilder = {  
+			    initTag : function(tag){  
+			        return function(){  
+			            var attrs={},children=[];  
+			            if(arguments.length>0){  
+			                if(arguments[0].nodeName || typeof arguments[0] =='string'){  
+			                    children = arguments;  
+			                }else{  
+			                    attrs = arguments[0];  
+			                    children = Array.prototype.slice.call(arguments,1);  
+			                }  
+			            }  
+			            return window.DomBuilder.create(tag,attrs,children);  
+			        }         
+			    },  
+			    create : function(tag,attrs,children){  
+			        var attr = attr ? attr : {};  
+			        var children = children ? children : [];  
+			        var dom = document.createElement(tag);  
+			        for(var attr in attrs){  
+			            if(attr == 'class'){  
+			                dom.className = attrs[attr];//由于class属性石javascript保留字，所以我们需要加这样的判断，其他属性还有需要大家扩展了  
+			            }else{  
+			                dom.setAttribute(attr,attrs[attr]);  
+			            }  
+			        }  
+			        for(var i=0; i<children.length; i++){  
+			            if(typeof children[i] == 'string'){  
+			                children[i] = document.createTextNode(children[i]);  
+			            }  
+			            dom.appendChild(children[i]);  
+			        }  
+			        return dom;  
+			    }
+			}
+
+			var tags = 'div|ul|li|label|input'.split('|');  
+		    var tag,i=0;  
+		    while(tag = tags[i++]){  
+		        window['$'+tag] = DomBuilder.initTag(tag);
+		    }
+		})();
+
+		var curr_prop = '';
+		var properties = {
+			'box-shadow': {
+				name : ['-webkit-box-shadow'],
+				props: [
+					{name: '大小', type: ''}
+				]
+			},
+			'box-shadow':{
+
+			}
+		}
+		var p = document.getElementById('property');
+		var c = document.getElementById('c_property');
+		var conter = document.getElementById('content');
+		var add = document.getElementById('add');
+		var from_add = document.getElementById('add_num');
+		var contents = document.querySelectorAll('.curr');
+		var reset = document.getElementById('reset');
+
+
+
+		p.addEventListener('change', function(e){
+			var val = this.value;
+			switch (val) {
+				case 'box-shadow':
+					//curr_prop = properties['box-shadow'];
+					c.style.display = 'none';
+					c.innerHTML = '';
+					var range = $input({'id':'num_range', 'type':"range", 'max':"100", 'min':"0", 'step':"1", 'value':"0"});
+					c.appendChild($li({'class':'item'},$label({'for':'num_range'}, '数值: '),range));
+					c.style.display = 'block';
+					range.addEventListener('change', function(e){
+						var value = this.value;
+						var cs = [].slice.apply(contents);
+						cs.forEach(function(curr){
+							curr.style.boxShadow = '0px 0px ' + value + 'px #000';
+						})					
+					});
+				break;
+				case 'border-radius':
+					//curr_prop = properties['border-radius'];
+					c.style.display = 'none';
+					c.innerHTML = '';
+					var range = $input({'id':'num_range', 'type':"range", 'max':"50", 'min':"0", 'step':"1", 'value':"0"});
+					c.appendChild($li({'class':'item'},$label({'for':'num_range'}, '数值: '),range));
+					c.style.display = 'block';
+					range.addEventListener('change', function(e){
+						var value = this.value;
+						var cs = [].slice.apply(contents);
+						cs.forEach(function(curr){
+							curr.style.borderRadius = value + '%';
+						})					
+					});
+				break;
+				case 'text-shadow':
+					//curr_prop = properties['border-radius'];
+					c.style.display = 'none';
+					c.innerHTML = '';
+					var range = $input({'id':'num_range', 'type':"range", 'max':"50", 'min':"0", 'step':"1", 'value':"0"});
+					c.appendChild($li({'class':'item'},$label({'for':'num_range'}, '数值: '),range));
+					c.style.display = 'block';
+					range.addEventListener('change', function(e){
+						var value = this.value;
+						var cs = [].slice.apply(contents);
+						cs.forEach(function(curr){
+							curr.style.textShadow = '0 0 ' + value + 'px #000';
+						})					
+					});
+				break;
+				case 'background-image':
+					c.style.display = 'none';
+					var btn = $input({'id':'changebg', 'type':"button", 'value':"切换背景实现"});
+					c.innerHTML = '';
+					c.appendChild($li({'class':'item'},$label({'for':'changebg'}, '功能: '), btn));
+					/*background-image: -webkit-linear-gradient(to top, orange, green);
+					background-image: linear-gradient(to top,orange,green);*/
+					c.style.display = 'block';
+					var isGradient = false;
+					var value ,name;
+					btn.addEventListener('click', function(e){
+						if(!isGradient){
+							value = 'linear-gradient(to top, orange, green)';
+							isGradient = true;	
+						}else{
+							value = '';
+							isGradient = false;	
+						}
+						var cs = [].slice.apply(contents);
+						cs.forEach(function(curr){
+							curr.style.backgroundImage = value;
+						})
+								
+					});
+				break;
+				case 'opacity':
+					var rangenum = 0;
+					c.style.display = 'none';
+					c.innerHTML = '';
+					var range = $input({'id':'num_range', 'type':"range", 'max':"1", 'min':"0", 'step':"0.1", 'value':"0"});
+					var check = $input({'id':'RGBA', 'type':"checkbox"});
+					var isRGBA = false;
+					var rgbaStr = '';
+					c.appendChild($li({'class':'item'}, $label({'for':'num_range'}, '透明度: '), range));	
+					c.appendChild($li({'class':'item'}, $label({'for':'RGBA'}, 'RGBA: '), check));			
+					c.style.display = 'block';
+					var value ,name;
+					range.addEventListener('change', function(e){
+						rangenum = this.value;
+						var cs = [].slice.apply(contents);
+						var value = range.value;
+						cs.forEach(function(curr){						
+							if(check.checked == false) {
+								curr.style.background = 'rgba(0, 0, 0, ' + value + ')';
+								curr.style.opacity = '';
+							}else{
+								curr.style.background = '#000';
+								curr.style.opacity = rangenum;
+							}
+						})	
+								
+					});
+				break;				
+				case 'transform':
+					var rangenum = 0;
+					c.style.display = 'none';
+					c.innerHTML = '';
+
+					var range_rotate = $input({'id':'rotate_range', 'type':"range", 'max':"360", 'min':"0", 'step':"1", 'value':"0"});
+					var range_translateY = $input({'id':'translateY_range', 'type':"range", 'max':"100", 'min':"0", 'step':"1", 'value':"0"});
+					var range_scale = $input({'id':'scale_range', 'type':"range", 'max':"2", 'min':"0", 'step':"0.1", 'value':"0"});
+					var range_skew = $input({'id':'skew_range', 'type':"range", 'max':"180", 'min':"0", 'step':"1", 'value':"0"});
+
+					var check = $input({'id':'RGBA', 'type':"checkbox"});
+
+					c.appendChild($li({'class':'item'}, $label({'for':'rotate_range'}, 'rotate: '), range_rotate));	
+					c.appendChild($li({'class':'item'}, $label({'for':'translateY_range'}, 'translateY: '), range_translateY));
+					c.appendChild($li({'class':'item'}, $label({'for':'scale_range'}, 'scale: '), range_scale));	
+					c.appendChild($li({'class':'item'}, $label({'for':'skew_range'}, 'skew: '), range_skew));
+
+					c.style.display = 'block';
+					range_rotate.addEventListener('change', function(e){
+						rangenum = this.value;
+						var cs = [].slice.apply(contents);
+						cs.forEach(function(curr){						
+							curr.style.webkitTransform = 'rotate(' + rangenum + 'deg)';
+						})							
+					});
+					range_translateY.addEventListener('change', function(e){
+						rangenum = this.value;
+						var cs = [].slice.apply(contents);
+						cs.forEach(function(curr){						
+							curr.style.webkitTransform = 'translateY(' + rangenum + 'px)';
+						})							
+					});
+					range_scale.addEventListener('change', function(e){
+						rangenum = this.value;
+						var cs = [].slice.apply(contents);
+						cs.forEach(function(curr){						
+							curr.style.webkitTransform = 'scale(' + rangenum + ',' + rangenum + ')';
+						})							
+					});
+					range_skew.addEventListener('change', function(e){
+						rangenum = this.value;
+						var cs = [].slice.apply(contents);
+						cs.forEach(function(curr){						
+							curr.style.webkitTransform = 'skew(' + rangenum + 'deg,' + rangenum + 'deg)';
+						})							
+					});
+				break;
+				case 'borderImage':
+					var rangenum = 0;
+					c.style.display = 'none';
+					c.innerHTML = '';
+					var range = $input({'id':'num_range', 'type':"range", 'max':"500", 'min':"0", 'step':"1", 'value':"0"});
+					//var btn = $input({'id':'change_border', 'type':"button", 'value':"切换边框"});
+					var isRGBA = false;
+					var rgbaStr = '';
+					c.appendChild($li({'class':'item'}, $label({'for':'num_range'}, '边框大小: '), range));	
+					//c.appendChild($li({'class':'item'}, $label({'for':'num_range'}, '边框颜色: '), btn));
+					c.style.display = 'block';
+					var value ,name;
+					var isBorderColor = false;
+					range.addEventListener('change', function(e){
+						rangenum = this.value;
+						var cs = [].slice.apply(contents);
+						var value = range.value;
+						cs.forEach(function(curr){						
+							curr.style.border = value + ' px solid orange;';
+							curr.style.webkitBorderImage = "url(http://www.baidu.com/img/bdlogo.gif) " + rangenum + " round stretch";
+						});
+								
+					});
+				break;
+				default:
+					
+			}
+		});
+		add.addEventListener('click', function(e){
+			var len = from_add.value;
+			var tmp;
+			conter.style.display = 'none';
+			conter.innerHTML = '';
+			for (var i = len - 1; i >= 0; i--) {
+				conter.appendChild($li({'class':'curr'}, '文字'));
+			};			
+			conter.style.display = 'block';
+			setTimeout(function(){
+				contents = document.querySelectorAll('.curr');
+			},25);			
+		});
+		reset.addEventListener('click', function(e){
+			var cs = [].slice.apply(contents);
+			cs.forEach(function(curr){
+				curr.removeAttribute('style');
+			})
+		});
+	</script>
+</body>
+</html>
